@@ -1,0 +1,37 @@
+.form_control {
+  display: flex;
+  justify-content: center;
+}
+
+.diary {
+  padding: 0.25rem;
+  padding-left: 1rem;
+  background: #f9f9f9;
+  border-color: transparent;
+  font-size: 1rem;
+  flex: 1 0 auto;
+  height: 3rem;
+  color: #30363b;
+  resize: none;
+  font-family: "Noto Sans KR", sans-serif;
+}
+.diary::placeholder {
+  font-family: "Noto Sans KR", sans-serif;
+  color: #30363b;
+}
+.submit_btn {
+  background: #e1f0fa;
+  border-color: transparent;
+  flex: 0 0 5rem;
+  display: grid;
+  align-items: center;
+  padding: 0.25rem;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s linear;
+  font-size: 0.85rem;
+}
+.submit_btn:hover {
+  color: #fff;
+  background: #80b7db;
+}

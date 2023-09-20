@@ -1,0 +1,29 @@
+.section_center {
+  width: 90vw;
+  margin: 0 auto;
+  max-width: 55rem;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  background: #fff;
+  border-radius: 0.25rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+.section_center h3 {
+  color: #2f3a41;
+  margin-bottom: 1.5rem;
+  margin-top: 1.25rem;
+  text-align: center;
+  font-family: "Kanit", sans-serif;
+}
+
+@media screen and (min-width: 992px) {
+  .section_center {
+    width: 95vw;
+  }
+}
+
+.diary_container {
+  margin-top: 2rem;
+}

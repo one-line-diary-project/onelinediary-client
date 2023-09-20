@@ -1,0 +1,31 @@
+.delete_btn {
+  height: 2rem;
+  display: grid;
+  align-items: center;
+  background: transparent;
+  border-color: transparent;
+  margin: 0 auto;
+  font-size: 0.85rem;
+  cursor: pointer;
+  margin-top: 1.25rem;
+  width: auto;
+}
+.delete_btn:hover {
+  background: #f9f9f9;
+}
+
+.delete_action_container {
+  margin-top: 1.25rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.cancel_delete_btn,
+.confirm_delete_btn {
+  height: 2rem;
+  background: transparent;
+  border-color: transparent;
+  font-size: 0.85rem;
+  cursor: pointer;
+  width: auto;
+}

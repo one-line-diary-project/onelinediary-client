@@ -1,0 +1,81 @@
+.diary_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  padding: 0.25rem 1rem;
+  border-radius: 0.25rem;
+  text-transform: capitalize;
+}
+.diary_item:hover {
+  color: #30363b;
+  background: #f9f9f9;
+}
+.diary_item:hover .content {
+  color: #30363b;
+}
+
+.content_container {
+  display: flex;
+  align-items: baseline;
+  flex-grow: 1;
+}
+
+.checkbox_container {
+  margin-right: 0.6rem;
+  /* display: none; */
+}
+.edit_btn_container {
+  margin-left: 0.5rem;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+input[type="checkbox"] + .stylish_checkbox {
+  width: 0.9rem;
+  height: 0.9rem;
+  border: 1px solid #102a42;
+  border-radius: 0.15rem;
+  display: flex;
+  cursor: pointer;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+
+input[type="checkbox"]:checked + .stylish_checkbox {
+  border-color: #e66b6b;
+  &::after {
+    content: "✔";
+    padding: 0;
+    margin: 0;
+    color: #e66b6b;
+  }
+}
+.text_container {
+  flex-grow: 1;
+}
+.content {
+  margin-bottom: 0;
+  color: #102a42;
+  letter-spacing: 2px;
+  text-align: left;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+.post_time {
+  font-family: "Manrope", sans-serif;
+  font-weight: 200;
+  margin-bottom: 0;
+  font-size: 0.85rem;
+  text-align: right;
+  color: #98a6af;
+}
+.edit_btn {
+  background: transparent;
+  border-color: transparent;
+  cursor: pointer;
+  font-size: 0.7rem;
+  margin: 0 0.2rem;
+}

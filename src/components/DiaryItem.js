@@ -3,13 +3,16 @@ import editButton from "../assets/editButton.svg";
 import { uiActions } from "../store/ui-slice";
 import { useDispatch, useSelector } from "react-redux";
 import React from "react";
+import { diaryActions } from "../store/diary-slice";
 
 const DiaryItem = ({ _id, content, postTime, showChck }) => {
   const isWritable = useSelector((state) => state.ui.isWritableMenu);
 
   const dispatch = useDispatch();
   const handleEditClick = () => {
-    dispatch(uiActions.showEditForm());
+    dispatch(uiActions.showEditForm({ state: true }));
+    dispatch(diaryActions.setEditId({ _id: _id }));
+    dispatch(diaryActions.setContent({ text: content }));
   };
   return (
     <article key={_id} className={classes.diary_item}>

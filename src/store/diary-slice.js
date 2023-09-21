@@ -5,6 +5,8 @@ const diarySlice = createSlice({
   initialState: {
     diaryList: [],
     diary: {},
+    editId: "",
+    content: "",
   },
   reducers: {
     replaceDiary(state, action) {
@@ -30,7 +32,23 @@ const diarySlice = createSlice({
         state.diary.contents = [...state.diary.contents, newContent.content];
       }
     },
-    editContentFromDiary(state, action) {},
+    editContentFromDiary(state) {
+      if (state.diary._id) {
+        state.diary.change = true;
+        state.diary.contents = state.diary.contents.map((item) => {
+          if (item._id === state.editId) {
+            return { ...item, content: state.content };
+          }
+          return item;
+        });
+      }
+    },
+    setEditId(state, action) {
+      state.editId = action.payload._id;
+    },
+    setContent(state, action) {
+      state.content = action.payload.text;
+    },
     removeContentFromDiary(state, action) {},
   },
 });

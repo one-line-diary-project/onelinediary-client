@@ -6,11 +6,13 @@ import { useEffect, useRef, useState } from "react";
 import { getStringTime } from "../utils/time";
 
 const DiaryForm = (props) => {
-  const isWritable = useSelector((state) => state.ui.isWritableMenu);
+  const isEdited = useSelector((state) => state.ui.editButtonClicked);
+  const content = useSelector((state) => state.diary.content);
+  const editId = useSelector((state) => state.diary.editId);
 
   const contentRef = useRef();
   const contentId = useRef(1);
-  const [content, setContent] = useState("");
+  //const [content, setContent] = useState("");
   const dispatch = useDispatch();
 
   const handleSubmitClick = (e) => {
@@ -21,20 +23,34 @@ const DiaryForm = (props) => {
       return;
     }
 
-    dispatch(
-      diaryActions.addContentToDiary({
-        id: props.diaryId,
-        content: {
-          _id: contentId.current,
-          content: content,
-          postTime: getStringTime(),
-        },
-      })
-    );
+    if (!isEdited) {
+      dispatch(
+        diaryActions.addContentToDiary({
+          id: props.diaryId,
+          content: {
+            _id: contentId.current,
+            content: content,
+            postTime: getStringTime(),
+          },
+        })
+      );
+    } else {
+      dispatch(
+        diaryActions
+          .editContentFromDiary
+          // {
+          // // id: props.diaryId,
+          // content: {
+          //   _id: editId,
+          //   content: content,
+          // },
+          // }
+          ()
+      );
+    }
 
     contentRef.current.value = "";
   };
-
   return (
     <form className="diary_form" onSubmit={handleSubmitClick}>
       <div className={classes.form_control}>
@@ -42,12 +58,15 @@ const DiaryForm = (props) => {
           type="text"
           id="diary"
           ref={contentRef}
+          value={content}
           className={classes.diary}
-          onChange={(e) => setContent(e.target.value)}
+          onChange={(e) =>
+            dispatch(diaryActions.setContent({ text: e.target.value }))
+          }
           placeholder="오늘 하루는 어땠나요?"
         />
         <button className={classes.submit_btn}>
-          {isWritable ? "수정" : "등록"}
+          {isEdited ? "수정" : "등록"}
         </button>
       </div>
     </form>

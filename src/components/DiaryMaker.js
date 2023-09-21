@@ -4,6 +4,7 @@ import DiaryForm from "./DiaryForm";
 import DiaryList from "./DiaryList";
 
 import { useSelector } from "react-redux";
+import React from "react";
 
 const currentDate = new Date();
 
@@ -25,4 +26,4 @@ const DiaryMaker = ({ _id, createdAt, contents }) => {
   );
 };
 
-export default DiaryMaker;
+export default React.memo(DiaryMaker);

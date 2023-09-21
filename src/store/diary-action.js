@@ -54,6 +54,7 @@ export const sendDiaryData = (diary) => {
           diaryData: result,
         })
       );
+      dispatch(diaryActions.setContent({ text: "" }));
     } catch (err) {
       console.log(err);
     }

@@ -1,13 +1,16 @@
-import { Fragment, useEffect } from "react";
+import { Fragment, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { uiActions } from "../store/ui-slice";
 import DiaryMaker from "../components/DiaryMaker";
-import { fetchCartData } from "../store/diary-action";
+import { fetchDiaryData, sendDiaryData } from "../store/diary-action";
+
+let isInitial = true;
 
 const New = () => {
   const dispatch = useDispatch();
-  const diaryList = useSelector((state) => state.diary.diaryList);
+  const diary = useSelector((state) => state.diary.diary);
+  const diaryId = useRef(1);
 
   useEffect(() => {
     dispatch(
@@ -15,16 +18,27 @@ const New = () => {
         status: true,
       })
     );
-    dispatch(fetchCartData());
+    dispatch(
+      fetchDiaryData({
+        isSelect: false,
+      })
+    );
   }, []);
+
+  useEffect(() => {
+    if (isInitial) {
+      isInitial = false;
+      return;
+    }
+    if (diary.change) dispatch(sendDiaryData(diary));
+  }, [diary, dispatch]);
 
   return (
     <Fragment>
-      <DiaryMaker />
-      {diaryList ? (
-        diaryList.map((diary) => <DiaryMaker key={diary.diaryId} {...diary} />)
+      {Object.keys(diary).length !== 0 ? (
+        <DiaryMaker key={diary._id} {...diary} />
       ) : (
-        <DiaryMaker />
+        <DiaryMaker key={diaryId.current} _id={diaryId.current} />
       )}
     </Fragment>
   );

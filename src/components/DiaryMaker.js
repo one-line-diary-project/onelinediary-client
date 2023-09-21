@@ -13,14 +13,14 @@ const day = String(currentDate.getDate()).padStart(2, "0");
 
 const formattedDate = `${year}.${month}.${day}`;
 
-const DiaryMaker = ({ diaryId, createdAt, user, contents }) => {
+const DiaryMaker = ({ _id, createdAt, contents }) => {
   const isWritable = useSelector((state) => state.ui.isWritableMenu);
 
   return (
     <section className={classes.section_center}>
       <h3>{createdAt || formattedDate}</h3>
-      {isWritable && <DiaryForm />}
-      <DiaryList contents={contents} />
+      {isWritable && <DiaryForm diaryId={_id} />}
+      {contents && <DiaryList contents={contents} />}
     </section>
   );
 };

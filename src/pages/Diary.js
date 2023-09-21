@@ -2,7 +2,7 @@ import { Fragment, useEffect } from "react";
 import DiaryMaker from "../components/DiaryMaker";
 import { uiActions } from "../store/ui-slice";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCartAllData } from "../store/diary-action";
+import { fetchDiaryData } from "../store/diary-action";
 
 const Diary = () => {
   const dispatch = useDispatch();
@@ -14,14 +14,22 @@ const Diary = () => {
         status: false,
       })
     );
-    dispatch(fetchCartAllData());
+    dispatch(
+      fetchDiaryData({
+        isSelect: true,
+        startDate: "2023-09-20",
+        endDate: "2023-09-20",
+      })
+    );
   }, []);
 
   return (
     <Fragment>
-      {diaryList.map((diary) => (
-        <DiaryMaker key={diary._id} {...diary} />
-      ))}
+      {diaryList.length > 0 ? (
+        diaryList.map((diary) => <DiaryMaker key={diary._id} {...diary} />)
+      ) : (
+        <p>데이터가 없습니다.</p>
+      )}
     </Fragment>
   );
 };

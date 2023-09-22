@@ -4,32 +4,65 @@ const diarySlice = createSlice({
   name: "diary",
   initialState: {
     diaryList: [],
+    diary: {},
+    editId: "",
+    content: "",
+    // deleteId: [],
   },
   reducers: {
-    replaceDiaryList(state, action) {
-      state.diaryList = action.payload.diaryData;
+    replaceDiary(state, action) {
+      state.diary = action.payload.diaryData;
     },
-    addContentToList(state, action) {
+    replaceDiaryList(state, action) {
+      state.diaryList = action.payload.diaryDataList;
+    },
+
+    addContentToDiary(state, action) {
       const newContent = action.payload;
-      const existingContent = state.diaryList.find(
-        (content) => content.id === newContent.id
-      );
-      if (!existingContent) {
-        state.diaryList.push({
-          diaryId: newContent.id,
-          registDate: newContent.registDate,
-          user: newContent.user,
-          contents: newContent.contents,
-        });
+      // const existingContent = state.diaryList.find(
+      //   (content) => content._id === newContent.id
+      // );
+      if (!state.diary._id) {
+        state.diary = {
+          _id: newContent.id,
+          change: true,
+          contents: [newContent.content],
+        };
       } else {
-        existingContent.contents = [
-          ...existingContent.contents,
-          ...newContent.contents,
-        ];
+        state.diary.change = true;
+        state.diary.contents = [...state.diary.contents, newContent.content];
       }
     },
-    editContentFromList(state, action) {},
-    removeContentFromLit(state, action) {},
+    editContentFromDiary(state) {
+      if (state.diary._id) {
+        state.diary.change = true;
+        state.diary.contents = state.diary.contents.map((item) => {
+          if (item._id === state.editId) {
+            return { ...item, content: state.content };
+          }
+          return item;
+        });
+      }
+    },
+    setEditId(state, action) {
+      state.editId = action.payload._id;
+    },
+    // setDeleteId(state, action) {
+    //   state.deleteId = action.payload._id;
+    // },
+    setContent(state, action) {
+      state.content = action.payload.text;
+    },
+    removeContentFromDiary(state, action) {
+      const deleteId = action.payload._id;
+
+      if (state.diary._id) {
+        state.diary.change = true;
+        state.diary.contents = state.diary.contents.filter((item) => {
+          return !deleteId.includes(item._id);
+        });
+      }
+    },
   },
 });
 

@@ -16,8 +16,8 @@ const uiSlice = createSlice({
     toggleCheckbox(state) {
       state.deleteButtonClicked = !state.deleteButtonClicked;
     },
-    showEditForm(state) {
-      state.editButtonClicked = !state.editButtonClicked;
+    showEditForm(state, action) {
+      state.editButtonClicked = action.payload.state;
     },
   },
 });

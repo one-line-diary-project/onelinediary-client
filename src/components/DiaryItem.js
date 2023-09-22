@@ -2,21 +2,25 @@ import classes from "./DiaryItem.module.css";
 import editButton from "../assets/editButton.svg";
 import { uiActions } from "../store/ui-slice";
 import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { diaryActions } from "../store/diary-slice";
 
-const DiaryItem = ({ id, content, postTime, showChck }) => {
+const DiaryItem = ({ _id, content, postTime, showChck }) => {
   const isWritable = useSelector((state) => state.ui.isWritableMenu);
 
   const dispatch = useDispatch();
   const handleEditClick = () => {
-    dispatch(uiActions.showEditForm());
+    dispatch(uiActions.showEditForm({ state: true }));
+    dispatch(diaryActions.setEditId({ _id: _id }));
+    dispatch(diaryActions.setContent({ text: content }));
   };
   return (
-    <article key={id} className={classes.diary_item}>
+    <article key={_id} className={classes.diary_item}>
       <div className={classes.content_container}>
         {showChck && (
           <div className={classes.checkbox_container}>
-            <input type="checkbox" id={id} />
-            <label htmlFor={id} className={classes.stylish_checkbox}></label>
+            <input type="checkbox" id={_id} />
+            <label htmlFor={_id} className={classes.stylish_checkbox}></label>
           </div>
         )}
         <div className={classes.text_container}>
@@ -39,4 +43,4 @@ const DiaryItem = ({ id, content, postTime, showChck }) => {
   );
 };
 
-export default DiaryItem;
+export default React.memo(DiaryItem);

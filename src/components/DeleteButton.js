@@ -5,6 +5,7 @@ import confirmDeleteButton from "../assets/confirmDeleteButton.svg";
 import cancelDeleteButton from "../assets/cancelDeleteButton.svg";
 import { uiActions } from "../store/ui-slice";
 import { useDispatch, useSelector } from "react-redux";
+import { diaryActions } from "../store/diary-slice";
 
 const DeleteButton = () => {
   const dispatch = useDispatch();
@@ -16,12 +17,15 @@ const DeleteButton = () => {
 
   const handleCancelDeleteClick = () => {
     dispatch(uiActions.toggleCheckbox());
+  };
 
-    /*
-     * #### 필요한 기능
-     * 1.클릭 시 다이어리 아이템에 체크박스가 사라져야함
-     * 2.클릭 시 항목 삭제 버튼이 보여야함
-     * 3.체크된 항목 체크여부 초기화  */
+  const handleConfirmDeleteClick = () => {
+    const checkedIds = Array.from(
+      document.querySelectorAll('input[type="checkbox"]:checked')
+    ).map((checkbox) => checkbox.id);
+
+    dispatch(diaryActions.removeContentFromDiary({ _id: checkedIds }));
+    handleCancelDeleteClick();
   };
 
   return (
@@ -39,7 +43,10 @@ const DeleteButton = () => {
           >
             <img src={cancelDeleteButton} alt="항목 삭제 취소" />
           </button>
-          <button className={classes.confirm_delete_btn}>
+          <button
+            className={classes.confirm_delete_btn}
+            onClick={handleConfirmDeleteClick}
+          >
             <img src={confirmDeleteButton} alt="항목 삭제 확인" />
           </button>
         </div>

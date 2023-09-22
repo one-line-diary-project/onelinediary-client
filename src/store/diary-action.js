@@ -1,54 +1,66 @@
 import { diaryActions } from "./diary-slice";
+import { uiActions } from "./ui-slice";
 
-export const fetchCartData = () => {
-  return async (dispatch) => {
-    // 오늘 날짜를 넣어서 조회해와야함
+export const fetchDiaryData = (searchData) => {
+  return async (dispatch, getState) => {
     const fetchData = async () => {
-      const response = await fetch(process.env.REACT_APP_BASE_URL);
-
-      if (!response.ok) {
-        throw new Error("데이터를 가져오지 못했습니다.");
-      }
-      //const data = response.json();
-      const diaryData = [];
-      return diaryData;
-    };
-
-    try {
-      const diaryData = await fetchData();
-
-      dispatch(
-        diaryActions.replaceDiaryList({
-          diaryData: diaryData,
-        })
-      );
-    } catch (err) {
-      console.log(err);
-    }
-  };
-};
-
-export const fetchCartAllData = () => {
-  return async (dispatch) => {
-    // 오늘 날짜를 넣어서 조회해와야함
-    const fetchData = async () => {
-      const response = await fetch(process.env.REACT_APP_BASE_URL);
-
-      if (!response.ok) {
-        throw new Error("데이터를 가져오지 못했습니다.");
-      }
+      const queryParam = new URLSearchParams(searchData);
+      const fullUrl = `${process.env.REACT_APP_BASE_URL}?${queryParam}`;
+      const response = await fetch(fullUrl);
       const data = response.json();
       return data;
     };
 
     try {
       const diaryData = await fetchData();
+      if (getState().ui.isWritableMenu) {
+        dispatch(
+          diaryActions.replaceDiary({
+            diaryData: diaryData || [],
+          })
+        );
+      } else {
+        dispatch(
+          diaryActions.replaceDiaryList({
+            diaryDataList: diaryData || {},
+          })
+        );
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
 
+export const sendDiaryData = (diary) => {
+  return async (dispatch, getState) => {
+    const sendRequest = async () => {
+      const response = await fetch(process.env.REACT_APP_BASE_URL, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          _id: diary._id,
+          contents: diary.contents,
+        }),
+      });
+      return response.json();
+    };
+
+    try {
+      const result = await sendRequest();
       dispatch(
-        diaryActions.replaceDiaryList({
-          diaryData,
+        diaryActions.replaceDiary({
+          diaryData: result,
         })
       );
+      dispatch(diaryActions.setContent({ text: "" }));
+
+      if (getState().ui.editButtonClicked)
+        dispatch(uiActions.showEditForm({ status: false }));
+      if (getState().ui.deleteButtonClicked)
+        dispatch(uiActions.toggleCheckbox());
     } catch (err) {
       console.log(err);
     }

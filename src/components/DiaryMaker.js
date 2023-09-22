@@ -8,7 +8,6 @@ import { getStringDate } from "../utils/date";
 
 const DiaryMaker = ({ _id, createdAt, contents }) => {
   const isWritable = useSelector((state) => state.ui.isWritableMenu);
-
   return (
     <section className={classes.section_center}>
       <h3>{getStringDate(createdAt)}</h3>

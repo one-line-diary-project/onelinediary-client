@@ -12,7 +12,6 @@ const DiaryForm = (props) => {
 
   const contentRef = useRef();
   const contentId = useRef(1);
-  //const [content, setContent] = useState("");
   const dispatch = useDispatch();
 
   const handleSubmitClick = (e) => {

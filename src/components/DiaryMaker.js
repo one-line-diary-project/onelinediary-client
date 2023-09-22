@@ -7,7 +7,6 @@ import DiaryList from "./DiaryList";
 import { getStringDate } from "../utils/date";
 
 const DiaryMaker = ({ _id, createdAt, contents }) => {
-  console.log(createdAt);
   const isWritable = useSelector((state) => state.ui.isWritableMenu);
 
   return (

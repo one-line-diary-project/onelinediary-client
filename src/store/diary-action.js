@@ -35,7 +35,7 @@ export const fetchDiaryData = (searchData) => {
 export const sendDiaryData = (diary) => {
   return async (dispatch, getState) => {
     const sendRequest = async () => {
-      const response = await fetch(process.env.REACT_APP_CREATE_URL, {
+      const response = await fetch(process.env.REACT_APP_BASE_URL, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

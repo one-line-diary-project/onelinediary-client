@@ -24,6 +24,14 @@ const DeleteButton = () => {
       document.querySelectorAll('input[type="checkbox"]:checked')
     ).map((checkbox) => checkbox.id);
 
+    if (checkedIds.length === 0) {
+      alert("선택된 일기가 없습니다.");
+      return;
+    }
+    if (!window.confirm("해당 일기를 삭제하시겠습니까?")) {
+      return;
+    }
+
     dispatch(diaryActions.removeContentFromDiary({ _id: checkedIds }));
     handleCancelDeleteClick();
   };

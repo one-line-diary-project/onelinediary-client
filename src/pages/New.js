@@ -18,11 +18,7 @@ const New = () => {
         status: true,
       })
     );
-    dispatch(
-      fetchDiaryData({
-        isSelect: false,
-      })
-    );
+    dispatch(fetchDiaryData({}));
   }, []);
 
   useEffect(() => {

@@ -4,11 +4,11 @@ import { diaryActions } from "../store/diary-slice";
 import { useEffect, useRef, useState } from "react";
 
 import { getStringTime } from "../utils/time";
+import { uiActions } from "../store/ui-slice";
 
 const DiaryForm = (props) => {
   const isEdited = useSelector((state) => state.ui.editButtonClicked);
   const content = useSelector((state) => state.diary.content);
-  const editId = useSelector((state) => state.diary.editId);
 
   const contentRef = useRef();
   const contentId = useRef(1);
@@ -35,21 +35,9 @@ const DiaryForm = (props) => {
         })
       );
     } else {
-      dispatch(
-        diaryActions
-          .editContentFromDiary
-          // {
-          // // id: props.diaryId,
-          // content: {
-          //   _id: editId,
-          //   content: content,
-          // },
-          // }
-          ()
-      );
+      dispatch(diaryActions.editContentFromDiary());
+      dispatch(uiActions.showEditForm({ status: false }));
     }
-
-    contentRef.current.value = "";
   };
   return (
     <form className="diary_form" onSubmit={handleSubmitClick}>

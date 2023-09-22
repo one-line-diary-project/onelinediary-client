@@ -1,7 +1,8 @@
 import { diaryActions } from "./diary-slice";
+import { uiActions } from "./ui-slice";
 
 export const fetchDiaryData = (searchData) => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     const fetchData = async () => {
       const queryParam = new URLSearchParams(searchData);
       const fullUrl = `${process.env.REACT_APP_BASE_URL}?${queryParam}`;
@@ -12,16 +13,16 @@ export const fetchDiaryData = (searchData) => {
 
     try {
       const diaryData = await fetchData();
-      if (searchData.isSelect) {
+      if (getState().ui.isWritableMenu) {
         dispatch(
-          diaryActions.replaceDiaryList({
-            diaryDataList: diaryData || [],
+          diaryActions.replaceDiary({
+            diaryData: diaryData || [],
           })
         );
       } else {
         dispatch(
-          diaryActions.replaceDiary({
-            diaryData: diaryData || {},
+          diaryActions.replaceDiaryList({
+            diaryDataList: diaryData || {},
           })
         );
       }
@@ -32,7 +33,7 @@ export const fetchDiaryData = (searchData) => {
 };
 
 export const sendDiaryData = (diary) => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     const sendRequest = async () => {
       const response = await fetch(process.env.REACT_APP_CREATE_URL, {
         method: "PUT",
@@ -55,6 +56,11 @@ export const sendDiaryData = (diary) => {
         })
       );
       dispatch(diaryActions.setContent({ text: "" }));
+
+      if (getState().ui.editButtonClicked)
+        dispatch(uiActions.showEditForm({ status: false }));
+      if (getState().ui.deleteButtonClicked)
+        dispatch(uiActions.toggleCheckbox());
     } catch (err) {
       console.log(err);
     }

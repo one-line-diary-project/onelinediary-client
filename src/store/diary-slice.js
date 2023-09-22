@@ -7,6 +7,7 @@ const diarySlice = createSlice({
     diary: {},
     editId: "",
     content: "",
+    // deleteId: [],
   },
   reducers: {
     replaceDiary(state, action) {
@@ -46,10 +47,22 @@ const diarySlice = createSlice({
     setEditId(state, action) {
       state.editId = action.payload._id;
     },
+    // setDeleteId(state, action) {
+    //   state.deleteId = action.payload._id;
+    // },
     setContent(state, action) {
       state.content = action.payload.text;
     },
-    removeContentFromDiary(state, action) {},
+    removeContentFromDiary(state, action) {
+      const deleteId = action.payload._id;
+
+      if (state.diary._id) {
+        state.diary.change = true;
+        state.diary.contents = state.diary.contents.filter((item) => {
+          return !deleteId.includes(item._id);
+        });
+      }
+    },
   },
 });
 

@@ -15,11 +15,7 @@ const Diary = () => {
       })
     );
     dispatch(
-      fetchDiaryData({
-        isSelect: true,
-        startDate: "2023-09-20",
-        endDate: "2023-09-20",
-      })
+      fetchDiaryData({ startDate: "2023-09-20", endDate: "2023-09-20" })
     );
   }, []);
 

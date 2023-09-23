@@ -1,10 +1,39 @@
 import { diaryActions } from "./diary-slice";
 import { uiActions } from "./ui-slice";
+import { getStringDate } from "../utils/date";
 
-export const fetchDiaryData = (searchData) => {
+export const fetchDiaryData = () => {
   return async (dispatch, getState) => {
     const fetchData = async () => {
-      const queryParam = new URLSearchParams(searchData);
+      const fullUrl = `${process.env.REACT_APP_BASE_URL}`;
+      const response = await fetch(fullUrl);
+      const data = response.json();
+      return data;
+    };
+
+    try {
+      const diaryData = await fetchData();
+
+      dispatch(
+        diaryActions.replaceDiary({
+          diaryData: diaryData || [],
+        })
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
+export const fetchDiaryDataList = () => {
+  return async (dispatch, getState) => {
+    const fetchData = async () => {
+      const queryParam = new URLSearchParams({
+        startDate: getState().diary.startDate,
+        endDate: getState().diary.endDate,
+        currentPage: getState().diary.currentPage,
+      });
+
       const fullUrl = `${process.env.REACT_APP_BASE_URL}?${queryParam}`;
       const response = await fetch(fullUrl);
       const data = response.json();
@@ -13,19 +42,61 @@ export const fetchDiaryData = (searchData) => {
 
     try {
       const diaryData = await fetchData();
-      if (getState().ui.isWritableMenu) {
-        dispatch(
-          diaryActions.replaceDiary({
-            diaryData: diaryData || [],
-          })
-        );
+
+      if (diaryData.length === 4) {
+        dispatch(diaryActions.setIsload({ status: true }));
+        dispatch(diaryActions.setCurrentPage());
       } else {
         dispatch(
-          diaryActions.replaceDiaryList({
-            diaryDataList: diaryData || {},
+          diaryActions.setIsload({
+            status: false,
           })
         );
       }
+      dispatch(
+        diaryActions.replaceDiaryList({
+          diaryDataList: diaryData || {},
+        })
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
+export const fetchScrollDiaryData = () => {
+  return async (dispatch, getState) => {
+    const fetchData = async () => {
+      const queryParam = new URLSearchParams({
+        startDate: getState().diary.startDate,
+        endDate: getState().diary.endDate,
+        currentPage: getState().diary.currentPage,
+      });
+
+      const fullUrl = `${process.env.REACT_APP_BASE_URL}?${queryParam}`;
+      const response = await fetch(fullUrl);
+      const data = response.json();
+      return data;
+    };
+
+    try {
+      const diaryData = await fetchData();
+
+      if (diaryData.length === 4) {
+        dispatch(diaryActions.setIsload({ status: true }));
+        dispatch(diaryActions.setCurrentPage());
+      } else {
+        dispatch(
+          diaryActions.setIsload({
+            status: false,
+          })
+        );
+      }
+      dispatch(
+        diaryActions.pushDiaryList({
+          diaryDataList: diaryData || {},
+        })
+      );
     } catch (err) {
       console.log(err);
     }

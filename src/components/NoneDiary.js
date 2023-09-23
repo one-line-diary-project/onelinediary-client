@@ -1,6 +1,4 @@
-import { useSelector } from "react-redux";
 import React from "react";
-
 import classes from "./NoneDiary.module.css";
 
 const NoneDiary = () => {

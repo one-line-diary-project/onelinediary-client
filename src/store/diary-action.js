@@ -28,7 +28,6 @@ export const fetchDiaryData = () => {
 export const fetchDiaryDataList = () => {
   return async (dispatch, getState) => {
     const fetchData = async () => {
-      console.log("fetchDiaryDataList");
       const queryParam = new URLSearchParams({
         startDate: getState().diary.startDate,
         endDate: getState().diary.endDate,
@@ -68,7 +67,6 @@ export const fetchDiaryDataList = () => {
 export const fetchScrollDiaryData = () => {
   return async (dispatch, getState) => {
     const fetchData = async () => {
-      console.log("fetchScrollDiaryData");
       const queryParam = new URLSearchParams({
         startDate: getState().diary.startDate,
         endDate: getState().diary.endDate,

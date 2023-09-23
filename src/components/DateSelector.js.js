@@ -4,13 +4,15 @@ import { getStringDate } from "../utils/date";
 
 import "react-datepicker/dist/react-datepicker.css";
 import classes from "./DateSelector.module.css";
-import { fetchDiaryData } from "../store/diary-action";
+import { fetchDiaryDataList } from "../store/diary-action";
 import { useDispatch } from "react-redux";
+import { diaryActions } from "../store/diary-slice";
+import { uiActions } from "../store/ui-slice";
 
 const DateSelector = () => {
   const dispatch = useDispatch();
   const [startDate, setStartDate] = useState(new Date());
-  const [edDate, setEndDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
 
   const CustomInput = forwardRef(({ value, onClick }, ref) => (
     <button className={classes.dateCustomInput} onClick={onClick} ref={ref}>
@@ -19,13 +21,18 @@ const DateSelector = () => {
   ));
 
   const handleSearchClick = () => {
-    dispatch(fetchDiaryData({ startDate: startDate, endDate: edDate }));
+    dispatch(
+      diaryActions.setSearhDate({
+        startDate: getStringDate(startDate, true),
+        endDate: getStringDate(endDate, true),
+      })
+    );
+    dispatch(fetchDiaryDataList({}));
   };
 
   useEffect(() => {
     handleSearchClick();
   }, []);
-
   return (
     <Fragment>
       <div className={classes.datePicker_container}>
@@ -40,7 +47,7 @@ const DateSelector = () => {
           <div className={classes.range} />
           <div>
             <Datepicker
-              selected={edDate}
+              selected={endDate}
               onChange={(date) => setEndDate(date)}
               customInput={<CustomInput />}
             />

@@ -7,6 +7,10 @@ const diarySlice = createSlice({
     diary: {},
     editId: "",
     content: "",
+    isLoaded: false,
+    currentPage: 1,
+    startDate: "",
+    endDate: "",
     // deleteId: [],
   },
   reducers: {
@@ -16,12 +20,13 @@ const diarySlice = createSlice({
     replaceDiaryList(state, action) {
       state.diaryList = action.payload.diaryDataList;
     },
+    pushDiaryList(state, action) {
+      state.diaryList.push(...action.payload.diaryDataList);
+    },
 
     addContentToDiary(state, action) {
       const newContent = action.payload;
-      // const existingContent = state.diaryList.find(
-      //   (content) => content._id === newContent.id
-      // );
+
       if (!state.diary._id) {
         state.diary = {
           _id: newContent.id,
@@ -62,6 +67,20 @@ const diarySlice = createSlice({
           return !deleteId.includes(item._id);
         });
       }
+    },
+    resetCurrentPage(state) {
+      state.currentPage = 1;
+    },
+    setIsload(state, action) {
+      state.isLoaded = action.payload.status;
+    },
+    setCurrentPage(state) {
+      state.currentPage = state.currentPage + 1;
+    },
+    setSearhDate(state, action) {
+      state.startDate = action.payload.startDate;
+      state.endDate = action.payload.endDate;
+      state.currentPage = 1;
     },
   },
 });

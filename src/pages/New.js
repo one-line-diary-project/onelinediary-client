@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { uiActions } from "../store/ui-slice";
 import DiaryMaker from "../components/DiaryMaker";
 import { fetchDiaryData, sendDiaryData } from "../store/diary-action";
+import { diaryActions } from "../store/diary-slice";
 
 let isInitial = true;
 

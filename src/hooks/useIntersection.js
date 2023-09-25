@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 
 const useIntersection = (onIntersect) => {
   const defaultOption = {
@@ -9,19 +9,23 @@ const useIntersection = (onIntersect) => {
 
   const ref = useRef(null);
 
-  const checkIntersection = useCallback(([entry], observer) => {
-    if (entry.isIntersecting) {
-      onIntersect();
-    }
-  }, []);
+  const checkIntersection = useCallback(
+    ([entry], observer) => {
+      if (entry.isIntersecting) {
+        onIntersect();
+        //observer.unobserve(entry.target);
+      }
+    },
+    [onIntersect]
+  );
 
   useEffect(() => {
     let observer;
-    if (ref) {
+    if (ref.current) {
       observer = new IntersectionObserver(checkIntersection, {
         ...defaultOption,
       });
-      observer.observe(ref);
+      observer.observe(ref.current);
     }
     return () => observer && observer.disconnect();
   }, [

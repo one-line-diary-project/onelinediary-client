@@ -1,15 +1,14 @@
-import { Fragment, useCallback, useEffect, useRef, useState } from "react";
+import { Fragment, useEffect } from "react";
 import DiaryMaker from "../components/DiaryMaker";
 import { uiActions } from "../store/ui-slice";
 import { useDispatch, useSelector } from "react-redux";
 import DateSelector from "../components/DateSelector.js";
 import NoneDiary from "../components/NoneDiary";
-import { diaryActions } from "../store/diary-slice";
-import { fetchDiaryData, fetchScrollDiaryData } from "../store/diary-action";
+import { fetchScrollDiaryData } from "../store/diary-action";
+import useIntersection from "../hooks/useIntersection.js";
 
 const Diary = () => {
   const dispatch = useDispatch();
-  const [ref, setRef] = useState(null);
   const diaryList = useSelector((state) => state.diary.diaryList);
   const isLoaded = useSelector((state) => state.diary.isLoaded);
 
@@ -21,34 +20,10 @@ const Diary = () => {
     );
   }, []);
 
-  const defaultOption = {
-    root: null,
-    threshold: 0.5,
-    rootMargin: "0px",
-  };
+  const ref = useIntersection(() => {
+    dispatch(fetchScrollDiaryData());
+  });
 
-  const checkIntersect = useCallback(([entry], observer) => {
-    if (entry.isIntersecting) {
-      dispatch(fetchScrollDiaryData());
-    }
-  }, []);
-
-  useEffect(() => {
-    let observer;
-    if (ref) {
-      observer = new IntersectionObserver(checkIntersect, {
-        ...defaultOption,
-      });
-      observer.observe(ref);
-    }
-    return () => observer && observer.disconnect(); // 의존성에 포함된 값이 바뀔때 관찰을 중지
-  }, [
-    ref,
-    defaultOption.root,
-    defaultOption.threshold,
-    defaultOption.rootMargin,
-    checkIntersect,
-  ]);
   return (
     <Fragment>
       <DateSelector />
@@ -57,7 +32,7 @@ const Diary = () => {
       ) : (
         <NoneDiary />
       )}
-      {isLoaded && <p ref={setRef}>loding..</p>}
+      {isLoaded && <p ref={ref}>loding..</p>}
     </Fragment>
   );
 };

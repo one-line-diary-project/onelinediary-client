@@ -11,6 +11,7 @@ const diarySlice = createSlice({
     currentPage: 1,
     startDate: "",
     endDate: "",
+    perPage: 4,
     // deleteId: [],
   },
   reducers: {
@@ -22,6 +23,7 @@ const diarySlice = createSlice({
     },
     pushDiaryList(state, action) {
       state.diaryList.push(...action.payload.diaryDataList);
+      // state.diaryList = state.diaryList.concat(action.payload.diaryDataList);
     },
 
     addContentToDiary(state, action) {

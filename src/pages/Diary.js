@@ -4,8 +4,7 @@ import { uiActions } from "../store/ui-slice";
 import { useDispatch, useSelector } from "react-redux";
 import DateSelector from "../components/DateSelector.js";
 import NoneDiary from "../components/NoneDiary";
-import { diaryActions } from "../store/diary-slice";
-import { fetchDiaryData, fetchScrollDiaryData } from "../store/diary-action";
+import { fetchScrollDiaryData } from "../store/diary-action";
 
 const Diary = () => {
   const dispatch = useDispatch();
@@ -41,7 +40,7 @@ const Diary = () => {
       });
       observer.observe(ref);
     }
-    return () => observer && observer.disconnect(); // 의존성에 포함된 값이 바뀔때 관찰을 중지
+    return () => observer && observer.disconnect();
   }, [
     ref,
     defaultOption.root,

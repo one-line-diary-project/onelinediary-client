@@ -32,6 +32,7 @@ export const fetchDiaryDataList = () => {
         startDate: getState().diary.startDate,
         endDate: getState().diary.endDate,
         currentPage: getState().diary.currentPage,
+        perPage: getState().diary.perPage,
       });
 
       const fullUrl = `${process.env.REACT_APP_BASE_URL}?${queryParam}`;
@@ -43,7 +44,7 @@ export const fetchDiaryDataList = () => {
     try {
       const diaryData = await fetchData();
 
-      if (diaryData.length === 4) {
+      if (diaryData.length === getState().diary.perPage) {
         dispatch(diaryActions.setIsload({ status: true }));
         dispatch(diaryActions.setCurrentPage());
       } else {
@@ -71,6 +72,7 @@ export const fetchScrollDiaryData = () => {
         startDate: getState().diary.startDate,
         endDate: getState().diary.endDate,
         currentPage: getState().diary.currentPage,
+        perPage: getState().diary.perPage,
       });
 
       const fullUrl = `${process.env.REACT_APP_BASE_URL}?${queryParam}`;
@@ -82,7 +84,7 @@ export const fetchScrollDiaryData = () => {
     try {
       const diaryData = await fetchData();
 
-      if (diaryData.length === 4) {
+      if (diaryData.length === getState().diary.perPage) {
         dispatch(diaryActions.setIsload({ status: true }));
         dispatch(diaryActions.setCurrentPage());
       } else {

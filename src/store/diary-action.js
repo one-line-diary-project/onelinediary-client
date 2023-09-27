@@ -5,7 +5,7 @@ import { getStringDate } from "../utils/date";
 export const fetchDiaryData = () => {
   return async (dispatch, getState) => {
     const fetchData = async () => {
-      const fullUrl = `${process.env.REACT_APP_BASE_URL}`;
+      const fullUrl = `${process.env.REACT_APP_DIARY_URL}`;
       const response = await fetch(fullUrl);
       const data = response.json();
       return data;
@@ -35,7 +35,7 @@ export const fetchDiaryDataList = () => {
         perPage: getState().diary.perPage,
       });
 
-      const fullUrl = `${process.env.REACT_APP_BASE_URL}?${queryParam}`;
+      const fullUrl = `${process.env.REACT_APP_DIARY_URL}?${queryParam}`;
       const response = await fetch(fullUrl);
       const data = response.json();
       return data;
@@ -75,7 +75,7 @@ export const fetchScrollDiaryData = () => {
         perPage: getState().diary.perPage,
       });
 
-      const fullUrl = `${process.env.REACT_APP_BASE_URL}?${queryParam}`;
+      const fullUrl = `${process.env.REACT_APP_DIARY_URL}?${queryParam}`;
       const response = await fetch(fullUrl);
       const data = response.json();
       return data;
@@ -108,7 +108,7 @@ export const fetchScrollDiaryData = () => {
 export const sendDiaryData = (diary) => {
   return async (dispatch, getState) => {
     const sendRequest = async () => {
-      const response = await fetch(process.env.REACT_APP_BASE_URL, {
+      const response = await fetch(process.env.REACT_APP_DIARY_URL, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

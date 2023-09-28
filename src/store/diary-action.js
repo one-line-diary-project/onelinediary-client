@@ -1,12 +1,15 @@
 import { diaryActions } from "./diary-slice";
 import { uiActions } from "./ui-slice";
 import { getStringDate } from "../utils/date";
+import { useNavigate } from "react-router-dom";
 
 export const fetchDiaryData = () => {
   return async (dispatch, getState) => {
     const fetchData = async () => {
       const fullUrl = `${process.env.REACT_APP_DIARY_URL}`;
-      const response = await fetch(fullUrl);
+      const response = await fetch(fullUrl, {
+        credentials: "include",
+      });
       const data = response.json();
       return data;
     };
@@ -19,6 +22,11 @@ export const fetchDiaryData = () => {
           diaryData: diaryData || [],
         })
       );
+
+      if (diaryData.author) {
+        console.log(diaryData.author);
+        dispatch(uiActions.toggleLogin({ status: true }));
+      }
     } catch (err) {
       console.log(err);
     }
@@ -36,7 +44,9 @@ export const fetchDiaryDataList = () => {
       });
 
       const fullUrl = `${process.env.REACT_APP_DIARY_URL}?${queryParam}`;
-      const response = await fetch(fullUrl);
+      const response = await fetch(fullUrl, {
+        credentials: "include",
+      });
       const data = response.json();
       return data;
     };
@@ -76,7 +86,9 @@ export const fetchScrollDiaryData = () => {
       });
 
       const fullUrl = `${process.env.REACT_APP_DIARY_URL}?${queryParam}`;
-      const response = await fetch(fullUrl);
+      const response = await fetch(fullUrl, {
+        credentials: "include",
+      });
       const data = response.json();
       return data;
     };
@@ -117,6 +129,7 @@ export const sendDiaryData = (diary) => {
           _id: diary._id,
           contents: diary.contents,
         }),
+        credentials: "include",
       });
       return response.json();
     };
@@ -134,6 +147,25 @@ export const sendDiaryData = (diary) => {
         dispatch(uiActions.showEditForm({ status: false }));
       if (getState().ui.deleteButtonClicked)
         dispatch(uiActions.toggleCheckbox());
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
+export const fetchLogout = () => {
+  return async (dispatch, getState) => {
+    const logout = async () => {
+      const response = await fetch(`http://localhost:3001/logout`, {
+        method: "POST",
+        credentials: "include",
+      });
+      return response.json();
+    };
+
+    try {
+      const result = await logout();
+      dispatch(uiActions.toggleLogin({ status: false }));
     } catch (err) {
       console.log(err);
     }

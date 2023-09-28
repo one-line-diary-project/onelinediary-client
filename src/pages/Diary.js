@@ -10,7 +10,7 @@ import useIntersection from "../hooks/useIntersection.js";
 const Diary = () => {
   const dispatch = useDispatch();
   const diaryList = useSelector((state) => state.diary.diaryList);
-  const isLoaded = useSelector((state) => state.diary.isLoaded);
+  const isLoaded = useSelector((state) => state.ui.isLoaded);
 
   useEffect(() => {
     dispatch(

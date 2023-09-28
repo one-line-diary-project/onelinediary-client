@@ -6,9 +6,11 @@ import logo from "../assets/logo.png";
 import menu from "../assets/menu.svg";
 
 import { links } from "../data/links";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [showLinks, setShowLinks] = useState(false);
+  const isLogined = useSelector((state) => state.ui.isLogined);
 
   const toggleShowLinks = () => {
     setShowLinks(!showLinks);
@@ -40,7 +42,7 @@ const Header = () => {
                     to={url}
                     className={url === "/login" ? classes.login_btn : ""}
                   >
-                    {text}
+                    {url === "/login" ? (isLogined ? "로그아웃" : text) : text}
                   </Link>
                 </li>
               );

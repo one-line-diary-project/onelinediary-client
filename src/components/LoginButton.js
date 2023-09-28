@@ -2,11 +2,13 @@ import React from "react";
 import classes from "./LoginButton.module.css";
 import loginButton from "../assets/loginButton.png";
 import { useDispatch } from "react-redux";
-import { login } from "../store/user-action";
+import getGoogleUrl from "../utils/googleUrl";
 
 const LoginButton = () => {
   const dispatch = useDispatch();
-  const handleLoginClick = () => {};
+  const handleLoginClick = () => {
+    window.location.href = getGoogleUrl();
+  };
   return (
     <section className={classes.section_center}>
       <div className={classes.btn_container}>

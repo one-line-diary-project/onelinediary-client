@@ -1,7 +1,5 @@
 import { diaryActions } from "./diary-slice";
 import { uiActions } from "./ui-slice";
-import { getStringDate } from "../utils/date";
-import { useNavigate } from "react-router-dom";
 
 export const fetchDiaryData = () => {
   return async (dispatch, getState) => {
@@ -19,12 +17,11 @@ export const fetchDiaryData = () => {
 
       dispatch(
         diaryActions.replaceDiary({
-          diaryData: diaryData || [],
+          diaryData: diaryData || {},
         })
       );
 
-      if (diaryData.author) {
-        console.log(diaryData.author);
+      if (diaryData.loginId) {
         dispatch(uiActions.toggleLogin({ status: true }));
       }
     } catch (err) {
@@ -154,7 +151,7 @@ export const sendDiaryData = (diary) => {
 };
 
 export const fetchLogout = () => {
-  return async (dispatch, getState) => {
+  return async (dispatch) => {
     const logout = async () => {
       const response = await fetch(`http://localhost:3001/logout`, {
         method: "POST",
@@ -164,7 +161,7 @@ export const fetchLogout = () => {
     };
 
     try {
-      const result = await logout();
+      await logout();
       dispatch(uiActions.toggleLogin({ status: false }));
     } catch (err) {
       console.log(err);

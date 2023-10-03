@@ -1,19 +1,31 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import classes from "./Header.module.css";
 import logo from "../assets/logo.png";
 import menu from "../assets/menu.svg";
 
 import { links } from "../data/links";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchLogout } from "../store/diary-action";
 
 const Header = () => {
+  const navigator = useNavigate();
+  const dispatch = useDispatch();
+
   const [showLinks, setShowLinks] = useState(false);
   const isLogined = useSelector((state) => state.ui.isLogined);
 
   const toggleShowLinks = () => {
     setShowLinks(!showLinks);
+  };
+
+  const handleLogout = (e) => {
+    if (isLogined) {
+      e.preventDefault();
+      dispatch(fetchLogout());
+      navigator("/");
+    }
   };
 
   return (
@@ -39,8 +51,9 @@ const Header = () => {
               return (
                 <li key={id}>
                   <Link
-                    to={url}
+                    to={url === "/login" ? (isLogined ? "/logout" : url) : url}
                     className={url === "/login" ? classes.login_btn : ""}
+                    onClick={handleLogout}
                   >
                     {url === "/login" ? (isLogined ? "로그아웃" : text) : text}
                   </Link>

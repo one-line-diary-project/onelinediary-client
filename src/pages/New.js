@@ -3,8 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { uiActions } from "../store/ui-slice";
 import DiaryMaker from "../components/DiaryMaker";
-import { fetchDiaryData, sendDiaryData } from "../store/diary-action";
+import {
+  fetchDiaryData,
+  fetchUserData,
+  sendDiaryData,
+} from "../store/diary-action";
 import { diaryActions } from "../store/diary-slice";
+import { fetchCheckLogin } from "../store/user-action";
 
 let isInitial = true;
 
@@ -27,12 +32,14 @@ const New = () => {
       isInitial = false;
       return;
     }
-    if (diary.change) dispatch(sendDiaryData(diary));
+    if (diary.change) {
+      dispatch(sendDiaryData(diary));
+    }
   }, [diary, dispatch]);
 
   return (
     <Fragment>
-      {Object.keys(diary).length !== 0 ? (
+      {diary._id ? (
         <DiaryMaker key={diary._id} {...diary} />
       ) : (
         <DiaryMaker key={diaryId.current} _id={diaryId.current} />

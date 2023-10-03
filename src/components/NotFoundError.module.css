@@ -1,0 +1,23 @@
+.section_center {
+  width: 90vw;
+  margin: 0 auto;
+  max-width: 55rem;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  padding: 2rem;
+}
+
+.section_center p {
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+@media screen and (min-width: 992px) {
+  .section_center {
+    width: 95vw;
+  }
+  .section_center p {
+    font-size: 2rem;
+  }
+}

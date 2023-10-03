@@ -1,12 +1,12 @@
 import { diaryActions } from "./diary-slice";
 import { uiActions } from "./ui-slice";
-import { getStringDate } from "../utils/date";
-
 export const fetchDiaryData = () => {
-  return async (dispatch, getState) => {
+  return async (dispatch) => {
     const fetchData = async () => {
-      const fullUrl = `${process.env.REACT_APP_BASE_URL}`;
-      const response = await fetch(fullUrl);
+      const fullUrl = `${process.env.REACT_APP_DIARY_URL}`;
+      const response = await fetch(fullUrl, {
+        credentials: "include",
+      });
       const data = response.json();
       return data;
     };
@@ -16,7 +16,7 @@ export const fetchDiaryData = () => {
 
       dispatch(
         diaryActions.replaceDiary({
-          diaryData: diaryData || [],
+          diaryData: diaryData || {},
         })
       );
     } catch (err) {
@@ -35,8 +35,10 @@ export const fetchDiaryDataList = () => {
         perPage: getState().diary.perPage,
       });
 
-      const fullUrl = `${process.env.REACT_APP_BASE_URL}?${queryParam}`;
-      const response = await fetch(fullUrl);
+      const fullUrl = `${process.env.REACT_APP_DIARY_URL}?${queryParam}`;
+      const response = await fetch(fullUrl, {
+        credentials: "include",
+      });
       const data = response.json();
       return data;
     };
@@ -75,8 +77,10 @@ export const fetchScrollDiaryData = () => {
         perPage: getState().diary.perPage,
       });
 
-      const fullUrl = `${process.env.REACT_APP_BASE_URL}?${queryParam}`;
-      const response = await fetch(fullUrl);
+      const fullUrl = `${process.env.REACT_APP_DIARY_URL}?${queryParam}`;
+      const response = await fetch(fullUrl, {
+        credentials: "include",
+      });
       const data = response.json();
       return data;
     };
@@ -108,7 +112,7 @@ export const fetchScrollDiaryData = () => {
 export const sendDiaryData = (diary) => {
   return async (dispatch, getState) => {
     const sendRequest = async () => {
-      const response = await fetch(process.env.REACT_APP_BASE_URL, {
+      const response = await fetch(process.env.REACT_APP_DIARY_URL, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -117,12 +121,17 @@ export const sendDiaryData = (diary) => {
           _id: diary._id,
           contents: diary.contents,
         }),
+        credentials: "include",
       });
+      if (!response.ok) {
+        throw new Error("Error!");
+      }
       return response.json();
     };
 
     try {
       const result = await sendRequest();
+
       dispatch(
         diaryActions.replaceDiary({
           diaryData: result,
@@ -135,7 +144,8 @@ export const sendDiaryData = (diary) => {
       if (getState().ui.deleteButtonClicked)
         dispatch(uiActions.toggleCheckbox());
     } catch (err) {
-      console.log(err);
+      alert("로그인 후 이용해주세요.");
+      dispatch(fetchDiaryData());
     }
   };
 };

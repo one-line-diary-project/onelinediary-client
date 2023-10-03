@@ -1,18 +1,36 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import classes from "./Header.module.css";
 import logo from "../assets/logo.png";
 import menu from "../assets/menu.svg";
 
 import { links } from "../data/links";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCheckLogin, fetchLogout } from "../store/user-action";
 
 const Header = () => {
+  const navigator = useNavigate();
+  const dispatch = useDispatch();
+
   const [showLinks, setShowLinks] = useState(false);
+  const isLogined = useSelector((state) => state.ui.isLogined);
 
   const toggleShowLinks = () => {
     setShowLinks(!showLinks);
   };
+
+  const handleLogout = (e) => {
+    if (e.target.href.indexOf("logout") !== -1 && isLogined) {
+      e.preventDefault();
+      dispatch(fetchLogout());
+      navigator("/");
+    }
+  };
+
+  useEffect(() => {
+    dispatch(fetchCheckLogin({}));
+  });
 
   return (
     <header>
@@ -37,10 +55,11 @@ const Header = () => {
               return (
                 <li key={id}>
                   <Link
-                    to={url}
+                    to={url === "/login" ? (isLogined ? "/logout" : url) : url}
                     className={url === "/login" ? classes.login_btn : ""}
+                    onClick={handleLogout}
                   >
-                    {text}
+                    {url === "/login" ? (isLogined ? "로그아웃" : text) : text}
                   </Link>
                 </li>
               );
@@ -52,4 +71,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default React.memo(Header);

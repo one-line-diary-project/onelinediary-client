@@ -4,6 +4,7 @@ const uiSlice = createSlice({
   name: "ui",
   initialState: {
     isWritableMenu: false,
+    isLogined: false,
     deleteButtonClicked: false,
     editButtonClicked: false,
   },
@@ -18,6 +19,9 @@ const uiSlice = createSlice({
     },
     showEditForm(state, action) {
       state.editButtonClicked = action.payload.state;
+    },
+    toggleLogin(state, action) {
+      state.isLogined = action.payload.status;
     },
   },
 });

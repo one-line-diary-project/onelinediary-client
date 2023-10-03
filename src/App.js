@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import New from "./pages/New";
 import Diary from "./pages/Diary";
 import Login from "./pages/Login";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/new" element={<New />}></Route>
           <Route path="/diary" element={<Diary />}></Route>
           <Route path="/login" element={<Login />}></Route>
+          <Route path="/*" element={<NotFound />}></Route>
         </Routes>
       </div>
       <Footer />

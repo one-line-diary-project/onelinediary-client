@@ -6,7 +6,7 @@ const Footer = () => {
     <footer>
       <div className={classes.footer_message}>
         <p className={classes.copyright}>한 줄 일기 by keemHwa © 2023</p>
-        <a href="https://github.com/one-line-diary-project">
+        <a href="https://github.com/one-line-diary-project" target="_blank">
           <img
             src={githubLogo}
             className={classes.githubLogo}

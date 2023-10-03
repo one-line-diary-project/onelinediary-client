@@ -1,6 +1,5 @@
 import { diaryActions } from "./diary-slice";
 import { uiActions } from "./ui-slice";
-
 export const fetchDiaryData = () => {
   return async (dispatch, getState) => {
     const fetchData = async () => {

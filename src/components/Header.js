@@ -21,7 +21,7 @@ const Header = () => {
   };
 
   const handleLogout = (e) => {
-    if (isLogined) {
+    if (e.target.href.indexOf("logout") !== -1 && isLogined) {
       e.preventDefault();
       dispatch(fetchLogout());
       navigator("/");

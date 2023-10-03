@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import classes from "./Header.module.css";
@@ -7,7 +7,7 @@ import menu from "../assets/menu.svg";
 
 import { links } from "../data/links";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchLogout } from "../store/diary-action";
+import { fetchCheckLogin, fetchLogout } from "../store/user-action";
 
 const Header = () => {
   const navigator = useNavigate();
@@ -27,6 +27,10 @@ const Header = () => {
       navigator("/");
     }
   };
+
+  useEffect(() => {
+    dispatch(fetchCheckLogin({}));
+  });
 
   return (
     <header>
@@ -67,4 +71,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default React.memo(Header);

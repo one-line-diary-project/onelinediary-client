@@ -1,7 +1,7 @@
 import { diaryActions } from "./diary-slice";
 import { uiActions } from "./ui-slice";
 export const fetchDiaryData = () => {
-  return async (dispatch, getState) => {
+  return async (dispatch) => {
     const fetchData = async () => {
       const fullUrl = `${process.env.REACT_APP_DIARY_URL}`;
       const response = await fetch(fullUrl, {
@@ -19,10 +19,6 @@ export const fetchDiaryData = () => {
           diaryData: diaryData || {},
         })
       );
-
-      if (diaryData.loginId) {
-        dispatch(uiActions.toggleLogin({ status: true }));
-      }
     } catch (err) {
       console.log(err);
     }
@@ -127,11 +123,15 @@ export const sendDiaryData = (diary) => {
         }),
         credentials: "include",
       });
+      if (!response.ok) {
+        throw new Error("Error!");
+      }
       return response.json();
     };
 
     try {
       const result = await sendRequest();
+
       dispatch(
         diaryActions.replaceDiary({
           diaryData: result,
@@ -144,26 +144,8 @@ export const sendDiaryData = (diary) => {
       if (getState().ui.deleteButtonClicked)
         dispatch(uiActions.toggleCheckbox());
     } catch (err) {
-      console.log(err);
-    }
-  };
-};
-
-export const fetchLogout = () => {
-  return async (dispatch) => {
-    const logout = async () => {
-      const response = await fetch(`http://localhost:3001/logout`, {
-        method: "POST",
-        credentials: "include",
-      });
-      return response.json();
-    };
-
-    try {
-      await logout();
-      dispatch(uiActions.toggleLogin({ status: false }));
-    } catch (err) {
-      console.log(err);
+      alert("로그인 후 이용해주세요.");
+      dispatch(fetchDiaryData());
     }
   };
 };

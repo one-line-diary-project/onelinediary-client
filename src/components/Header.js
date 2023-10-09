@@ -44,27 +44,36 @@ const Header = () => {
               <img src={menu} className="menu" alt="메뉴" />
             </button>
           </div>
-          <ul
-            className={[
-              classes.links,
-              showLinks === true ? classes.show_links : "",
-            ].join(" ")}
-          >
-            {links.map((link) => {
-              const { id, url, text } = link;
-              return (
-                <li key={id}>
-                  <Link
-                    to={url === "/login" ? (isLogined ? "/logout" : url) : url}
-                    className={url === "/login" ? classes.login_btn : ""}
-                    onClick={handleLogout}
-                  >
-                    {url === "/login" ? (isLogined ? "로그아웃" : text) : text}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
+          <div className={classes.menu_center}>
+            <button>toggle</button>
+            <ul
+              className={[
+                classes.links,
+                showLinks === true ? classes.show_links : "",
+              ].join(" ")}
+            >
+              {links.map((link) => {
+                const { id, url, text } = link;
+                return (
+                  <li key={id}>
+                    <Link
+                      to={
+                        url === "/login" ? (isLogined ? "/logout" : url) : url
+                      }
+                      className={url === "/login" ? classes.login_btn : ""}
+                      onClick={handleLogout}
+                    >
+                      {url === "/login"
+                        ? isLogined
+                          ? "로그아웃"
+                          : text
+                        : text}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </div>
       </nav>
     </header>

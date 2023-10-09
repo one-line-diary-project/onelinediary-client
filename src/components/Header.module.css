@@ -55,6 +55,9 @@
   .nav_toggle {
     display: none;
   }
+  .menu_center {
+    display: flex;
+  }
   .links {
     height: auto;
     display: flex;

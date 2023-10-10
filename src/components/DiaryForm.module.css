@@ -6,21 +6,21 @@
 .diary {
   padding: 0.25rem;
   padding-left: 1rem;
-  background: #f9f9f9;
+  background: var(--clr-bcg);
   border-color: transparent;
   font-size: 1rem;
   flex: 1 0 auto;
   height: 3rem;
-  color: #30363b;
+  color: var(--clr-text-font);
   resize: none;
   font-family: "Noto Sans KR", sans-serif;
 }
 .diary::placeholder {
   font-family: "Noto Sans KR", sans-serif;
-  color: #30363b;
+  color: var(--clr-text-font);
 }
 .submit_btn {
-  background: #e1f0fa;
+  background: var(--clr-submit-btn);
   border-color: transparent;
   flex: 0 0 5rem;
   display: grid;
@@ -29,9 +29,10 @@
   letter-spacing: 2px;
   cursor: pointer;
   transition: all 0.3s linear;
-  font-size: 0.85rem;
+  font-size: 1rem;
+  font-family: "Noto Sans KR", sans-serif;
 }
 .submit_btn:hover {
-  color: #fff;
-  background: #80b7db;
+  color: var(--clr-submit-btn-hover-font);
+  background: var(--clr-submit-btn-hover);
 }

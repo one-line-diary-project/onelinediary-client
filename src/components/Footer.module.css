@@ -7,7 +7,7 @@ footer {
   align-items: center;
   justify-content: center;
   font-size: 0.85rem;
-  color: var(--clr-grey-5);
+  color: var(--clr-text-font);
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
@@ -18,5 +18,6 @@ footer {
 
 .githubLogo {
   width: 1.5rem;
-  margin-left: 0.2rem;
+  margin-left: 0.3rem;
+  fill: var(--clr-menu-btn);
 }

@@ -8,11 +8,11 @@
   text-transform: capitalize;
 }
 .diary_item:hover {
-  color: #30363b;
-  background: #f9f9f9;
+  color: var(--clr-text-font);
+  background: var(--clr-bcg);
 }
 .diary_item:hover .content {
-  color: #30363b;
+  color: var(--clr-text-font);
 }
 
 .content_container {
@@ -23,7 +23,6 @@
 
 .checkbox_container {
   margin-right: 0.6rem;
-  /* display: none; */
 }
 .edit_btn_container {
   margin-left: 0.5rem;
@@ -35,7 +34,7 @@ input[type="checkbox"] {
 input[type="checkbox"] + .stylish_checkbox {
   width: 0.9rem;
   height: 0.9rem;
-  border: 1px solid #102a42;
+  border: 1px solid var(--clr-checkbox-border);
   border-radius: 0.15rem;
   display: flex;
   cursor: pointer;
@@ -45,12 +44,12 @@ input[type="checkbox"] + .stylish_checkbox {
 }
 
 input[type="checkbox"]:checked + .stylish_checkbox {
-  border-color: #e66b6b;
+  border-color: var(--clr-checkbox-check-border);
   &::after {
     content: "✔";
     padding: 0;
     margin: 0;
-    color: #e66b6b;
+    color: var(--clr-checkbox-check-border);
   }
 }
 .text_container {
@@ -58,7 +57,7 @@ input[type="checkbox"]:checked + .stylish_checkbox {
 }
 .content {
   margin-bottom: 0;
-  color: #102a42;
+  color: var(--clr-content-font);
   letter-spacing: 2px;
   text-align: left;
   word-break: break-all;
@@ -70,7 +69,7 @@ input[type="checkbox"]:checked + .stylish_checkbox {
   margin-bottom: 0;
   font-size: 0.85rem;
   text-align: right;
-  color: #98a6af;
+  color: var(--clr-postTime-font);
 }
 .edit_btn {
   background: transparent;

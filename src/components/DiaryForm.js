@@ -8,6 +8,8 @@ import { uiActions } from "../store/ui-slice";
 
 const DiaryForm = (props) => {
   const isEdited = useSelector((state) => state.ui.editButtonClicked);
+  const isLogined = useSelector((state) => state.ui.isLogined);
+
   const content = useSelector((state) => state.diary.content);
 
   const contentRef = useRef();
@@ -17,6 +19,10 @@ const DiaryForm = (props) => {
   const handleSubmitClick = (e) => {
     e.preventDefault();
 
+    if (!isLogined) {
+      alert("로그인 후 이용해주세요.");
+      return;
+    }
     if (content.length < 1) {
       contentRef.current.focus();
       return;

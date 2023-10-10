@@ -7,7 +7,6 @@ const uiSlice = createSlice({
     isLogined: false,
     deleteButtonClicked: false,
     editButtonClicked: false,
-    theme: "light-theme",
   },
   reducers: {
     checkWritableMenu(state, action) {
@@ -23,9 +22,6 @@ const uiSlice = createSlice({
     },
     toggleLogin(state, action) {
       state.isLogined = action.payload.status;
-    },
-    toogleTheme(state, action) {
-      state.theme = action.payload.theme;
     },
   },
 });

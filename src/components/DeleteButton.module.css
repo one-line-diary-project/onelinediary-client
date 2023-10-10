@@ -11,7 +11,7 @@
   width: auto;
 }
 .delete_btn:hover {
-  background: #f9f9f9;
+  background: var(--clr-bcg);
 }
 
 .delete_action_container {

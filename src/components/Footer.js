@@ -1,5 +1,6 @@
 import classes from "./Footer.module.css";
-import githubLogo from "../assets/githubMark.svg";
+import { ReactComponent as Logo } from "../assets/githubMark.svg";
+import { useSelector } from "react-redux";
 
 const Footer = () => {
   return (
@@ -7,11 +8,7 @@ const Footer = () => {
       <div className={classes.footer_message}>
         <p className={classes.copyright}>한 줄 일기 by keemHwa © 2023</p>
         <a href="https://github.com/one-line-diary-project" target="_blank">
-          <img
-            src={githubLogo}
-            className={classes.githubLogo}
-            alt="GitHub 로고"
-          />
+          <Logo className={classes.githubLogo} />
         </a>
       </div>
     </footer>

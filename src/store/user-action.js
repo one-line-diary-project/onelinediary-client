@@ -1,3 +1,4 @@
+import { diaryActions } from "./diary-slice";
 import { uiActions } from "./ui-slice";
 
 export const fetchCheckLogin = () => {
@@ -38,6 +39,8 @@ export const fetchLogout = () => {
     try {
       await logout();
       dispatch(uiActions.toggleLogin({ status: false }));
+      dispatch(diaryActions.replaceDiary({ diaryData: {} }));
+      dispatch(diaryActions.replaceDiaryList({ diaryDataList: {} }));
     } catch (err) {
       console.log(err);
     }

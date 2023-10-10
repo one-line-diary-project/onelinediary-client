@@ -7,9 +7,53 @@
   padding: 0;
   box-sizing: border-box;
 }
+.dark-theme {
+  --clr-bcg: #30363b;
+  --clr-diary-bcg: #383e43;
+  --clr-diary-border: #232425;
+  --clr-text-font: #f9f9f9;
+  --clr-content-font: #505559;
+  --clr-postTime-font: #9fa2a5;
+  --clr-title-font: #dfe0e1;
+  --clr-time-font: #909395;
+  --clr-menu-font: #eff0f0;
+  --clr-menu-btn: #f7f7f7;
+  --clr-menu-btn-font: #383e43;
+  --clr-menu-hover-bcg: #c9c9c9;
+  --clr-menu-hover-font: #383e43;
+  --clr-submit-btn: #b8c5ce;
+  --clr-submit-btn-hover: #5e8097;
+  --clr-submit-btn-hover-font: #383e43;
+  --clr-theme-btn-hover-bcg: #909395;
+  --clr-checkbox-border: #a8b1ba;
+  --clr-checkbox-check-border: #e66b6b;
+}
+.light-theme {
+  --clr-bcg: #f9f9f9;
+  --clr-diary-bcg: #fff;
+  --clr-diary-border: #0000001a;
+  --clr-text-font: #30363b;
+  --clr-content-font: #102a42;
+  --clr-postTime-font: #98a6af;
+  --clr-title-font: #2f3a41;
+  --clr-time-font: #98a6af;
+  --clr-menu-font: #324d67;
+  --clr-menu-btn: #2f3a41;
+  --clr-menu-btn-font: #fff;
+  --clr-menu-hover-bcg: #b1b1b1;
+  --clr-menu-hover-font: #fff;
+  --clr-submit-btn: #e1f0fa;
+  --clr-submit-btn-hover: #80b7db;
+  --clr-submit-btn-hover-font: #fff;
+  --clr-theme-btn-hover-bcg: #d4d4d4;
+  --clr-checkbox-border: #102a42;
+  --clr-checkbox-check-border: #e66b6b;
+}
+
 body {
   font-family: "Noto Sans KR", sans-serif;
-  background: #f9f9f9;
+  /* background: #f9f9f9; */
+  background: var(--clr-bcg);
   line-height: 1.5;
   font-size: 0.875rem;
   height: 100vh;
@@ -30,7 +74,7 @@ h3 {
 
 p {
   margin-bottom: 1.25rem;
-  color: #30363b;
+  color: var(--clr-text-font);
 }
 .wrap {
   height: auto;

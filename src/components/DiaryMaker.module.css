@@ -4,14 +4,14 @@
   max-width: 55rem;
   margin-top: 5rem;
   margin-bottom: 5rem;
-  background: #fff;
+  background: var(--clr-diary-bcg);
   border-radius: 0.25rem;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 15px var(--clr-diary-border);
   padding: 2rem;
 }
 
 .section_center h3 {
-  color: #2f3a41;
+  color: var(--clr-title-font);
   margin-bottom: 1.5rem;
   margin-top: 1.25rem;
   text-align: center;

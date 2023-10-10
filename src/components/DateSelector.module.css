@@ -15,16 +15,16 @@
   width: 38vh;
   justify-content: space-evenly;
   align-items: center;
-  background-color: #fff;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  background-color: var(--clr-diary-bcg);
+  box-shadow: 0 5px 15px var(--clr-diary-border);
 }
 
 .dateCustomInput {
   border: none;
-  background-color: #fff;
+  background-color: var(--clr-diary-bcg);
   font-family: "Noto Sans KR", sans-serif;
   font-size: 1rem;
-  color: #30363b;
+  color: var(--clr-text-font);
   letter-spacing: 2px;
   cursor: pointer;
 }
@@ -35,18 +35,20 @@
   font-weight: 500;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+  color: var(--clr-text-font);
 }
 .search_btn {
   border: none;
   font-size: 1rem;
-  background-color: #fff;
+  background-color: var(--clr-diary-bcg);
   border-radius: 2rem;
   border: 1px solid transparent;
   flex: 0 0 4rem;
   font-family: "Noto Sans KR", sans-serif;
   padding: 0.3rem 1rem 0.3rem 1rem;
   cursor: pointer;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 15px var(--clr-diary-border);
+  color: var(--clr-text-font);
 }
 
 @media screen and (min-width: 992px) {

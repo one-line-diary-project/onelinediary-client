@@ -144,7 +144,7 @@ export const sendDiaryData = (diary) => {
       if (getState().ui.deleteButtonClicked)
         dispatch(uiActions.toggleCheckbox());
     } catch (err) {
-      alert("로그인 후 이용해주세요.");
+      alert("오류가 발생했습니다.");
       dispatch(fetchDiaryData());
     }
   };

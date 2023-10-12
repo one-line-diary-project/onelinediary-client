@@ -53,7 +53,11 @@ const DateSelector = () => {
             />
           </div>
         </div>
-        <button className={classes.search_btn} onClick={handleSearchClick}>
+        <button
+          className={classes.search_btn}
+          data-testid="seacrhBtn"
+          onClick={handleSearchClick}
+        >
           조회
         </button>
       </div>

@@ -6,10 +6,8 @@ afterEach(() => {
   jest.clearAllMocks();
 });
 describe("Header component", () => {
-  let tree;
-
   beforeEach(() => {
-    tree = render(<Header />);
+    render(<Header />);
   });
 
   it("renders Header", () => {

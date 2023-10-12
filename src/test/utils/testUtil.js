@@ -1,22 +1,19 @@
 import React from "react";
 import { render as rtlRender } from "@testing-library/react";
-import { configureStore } from "@reduxjs/toolkit";
-import modalReducer from "store/modules/modal";
+import storeR from "../../store/index";
 import { Provider } from "react-redux";
+import { BrowserRouter as Router } from "react-router-dom";
 
 function render(
   ui,
-  {
-    preloadedState,
-    store = configureStore({
-      reducer: { modal: modalReducer },
-      preloadedState,
-    }),
-    ...renderOptions
-  } = {}
+  { preloadedState = {}, store = storeR, ...renderOptions } = {}
 ) {
   function Wrapper({ children }) {
-    return <Provider store={store}>{children}</Provider>;
+    return (
+      <Provider store={store}>
+        <Router>{children}</Router>
+      </Provider>
+    );
   }
   return rtlRender(ui, { wrapper: Wrapper, ...renderOptions });
 }

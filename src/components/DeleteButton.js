@@ -39,7 +39,11 @@ const DeleteButton = () => {
   return (
     <>
       {!showChck && (
-        <button className={classes.delete_btn} onClick={handleDeleteClick}>
+        <button
+          className={classes.delete_btn}
+          data-testid="deleteButton"
+          onClick={handleDeleteClick}
+        >
           <img src={deleteButton} alt="항목 삭제" />
         </button>
       )}

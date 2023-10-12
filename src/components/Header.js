@@ -68,6 +68,7 @@ const Header = () => {
             </Link>
             <div className={classes.button_container}>
               <button
+                data-testid="changeTheme"
                 className={classes.theme_toggle_main}
                 onClick={toggleChangeTheme}
               >
@@ -78,9 +79,13 @@ const Header = () => {
                   />
                 </div>
               </button>
-              <button className={classes.nav_toggle} onClick={toggleShowLinks}>
+              <button
+                className={classes.nav_toggle}
+                data-testid="toggleShowLinks"
+                onClick={toggleShowLinks}
+              >
                 {/* <img src={menu} className="menu" alt="메뉴" /> */}
-                <Menu className={classes.nav_toggle_menu} />
+                <Menu className={classes.nav_toggle_menu} alt="nav menu" />
               </button>
             </div>
           </div>
@@ -93,7 +98,7 @@ const Header = () => {
                 <img
                   src={theme === "light-theme" ? lightTheme : darkTheme}
                   className="menu"
-                  alt="화면 색상 모드"
+                  alt={theme}
                 />
               </div>
             </button>
@@ -113,6 +118,7 @@ const Header = () => {
                       }
                       className={url === "/login" ? classes.login_btn : ""}
                       onClick={handleLogout}
+                      data-testid={isLogined ? "toggleLogout" : ""}
                     >
                       {url === "/login"
                         ? isLogined

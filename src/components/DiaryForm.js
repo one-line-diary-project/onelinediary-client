@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { getStringTime } from "../utils/time";
 import { uiActions } from "../store/ui-slice";
+import { useNavigate } from "react-router-dom";
 
 const DiaryForm = (props) => {
   const isEdited = useSelector((state) => state.ui.editButtonClicked);
@@ -15,13 +16,15 @@ const DiaryForm = (props) => {
   const contentRef = useRef();
   const contentId = useRef(1);
   const dispatch = useDispatch();
+  const navigator = useNavigate();
 
   const handleSubmitClick = (e) => {
     e.preventDefault();
 
     if (!isLogined) {
       alert("로그인 후 이용해주세요.");
-      return;
+      navigator("/login");
+      //return;
     }
     if (content.length < 1) {
       contentRef.current.focus();

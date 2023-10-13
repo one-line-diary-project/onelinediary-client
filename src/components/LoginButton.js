@@ -5,7 +5,6 @@ import { useDispatch } from "react-redux";
 import getGoogleUrl from "../utils/googleUrl";
 
 const LoginButton = () => {
-  const dispatch = useDispatch();
   const handleLoginClick = () => {
     window.location.href = getGoogleUrl();
   };

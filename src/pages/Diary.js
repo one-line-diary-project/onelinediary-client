@@ -2,7 +2,7 @@ import { Fragment, useEffect } from "react";
 import DiaryMaker from "../components/DiaryMaker";
 import { uiActions } from "../store/ui-slice";
 import { useDispatch, useSelector } from "react-redux";
-import DateSelector from "../components/DateSelector.js";
+import DateSelector from "../components/DateSelector";
 import NoneDiary from "../components/NoneDiary";
 import { fetchScrollDiaryData } from "../store/diary-action";
 import useIntersection from "../hooks/useIntersection.js";

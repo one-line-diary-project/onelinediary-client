@@ -41,7 +41,7 @@ const DiaryForm = (props) => {
       );
     } else {
       dispatch(diaryActions.editContentFromDiary());
-      dispatch(uiActions.showEditForm({ status: false }));
+      dispatch(uiActions.showEditForm({ state: false }));
     }
   };
   return (

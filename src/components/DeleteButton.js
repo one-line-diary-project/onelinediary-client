@@ -52,12 +52,14 @@ const DeleteButton = () => {
           <button
             className={classes.cancel_delete_btn}
             onClick={handleCancelDeleteClick}
+            data-testid="cancelButton"
           >
             <img src={cancelDeleteButton} alt="항목 삭제 취소" />
           </button>
           <button
             className={classes.confirm_delete_btn}
             onClick={handleConfirmDeleteClick}
+            data-testid="confirmButton"
           >
             <img src={confirmDeleteButton} alt="항목 삭제 확인" />
           </button>

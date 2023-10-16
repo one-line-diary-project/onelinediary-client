@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import classes from "./Header.module.css";
-import logo from "../assets/logo.png";
 import { ReactComponent as Logo } from "../assets/logo.svg";
 import { ReactComponent as Menu } from "../assets/menu.svg";
 import lightTheme from "../assets/lightTheme.svg";
@@ -11,7 +10,6 @@ import darkTheme from "../assets/darkTheme.svg";
 import { links } from "../data/links";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCheckLogin, fetchLogout } from "../store/user-action";
-import { uiActions } from "../store/ui-slice";
 
 const getStorageTheme = () => {
   let theme = "light-theme";
@@ -22,7 +20,6 @@ const getStorageTheme = () => {
 };
 
 const Header = () => {
-  const navigator = useNavigate();
   const dispatch = useDispatch();
 
   const [showLinks, setShowLinks] = useState(false);
@@ -46,6 +43,7 @@ const Header = () => {
       dispatch(fetchLogout());
       //navigator("/");
     }
+    toggleShowLinks();
   };
 
   useEffect(() => {
@@ -64,7 +62,6 @@ const Header = () => {
           <div className={classes.nav_header}>
             <Link to="/">
               <Logo className={classes.logo} />
-              {/* <img src={logo} className={classes.logo} alt="로고" /> */}
             </Link>
             <div className={classes.button_container}>
               <button
@@ -137,4 +134,4 @@ const Header = () => {
   );
 };
 
-export default React.memo(Header);
+export default Header;

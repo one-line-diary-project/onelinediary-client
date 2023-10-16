@@ -51,20 +51,20 @@
   color: var(--clr-text-font);
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 900px) {
   .datePicker_container {
     width: 60vh;
     margin-top: 3rem;
   }
   .datePicker_wrapper {
-    width: 48vh;
-    height: 6vh;
+    width: 45vh;
+    height: 5vh;
   }
   .dateCustomInput {
-    font-size: 1.35rem;
+    font-size: 1.25rem;
   }
   .search_btn {
-    font-size: 1.4rem;
+    font-size: 1.25rem;
     flex: 0 0 5rem;
   }
 

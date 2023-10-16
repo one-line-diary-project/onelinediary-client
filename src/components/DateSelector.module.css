@@ -23,7 +23,7 @@
   border: none;
   background-color: var(--clr-diary-bcg);
   font-family: "Noto Sans KR", sans-serif;
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: var(--clr-text-font);
   letter-spacing: 2px;
   cursor: pointer;
@@ -31,7 +31,7 @@
 
 .range::before {
   content: "-";
-  font-size: 1.3rem;
+  font-size: 1rem;
   font-weight: 500;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -61,7 +61,7 @@
     height: 6vh;
   }
   .dateCustomInput {
-    font-size: 1.5rem;
+    font-size: 1.35rem;
   }
   .search_btn {
     font-size: 1.4rem;

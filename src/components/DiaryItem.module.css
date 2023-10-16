@@ -67,7 +67,7 @@ input[type="checkbox"]:checked + .stylish_checkbox {
   font-family: "Manrope", sans-serif;
   font-weight: 200;
   margin-bottom: 0;
-  font-size: 0.85rem;
+  font-size: 0.7rem;
   text-align: right;
   color: var(--clr-postTime-font);
 }
@@ -77,4 +77,10 @@ input[type="checkbox"]:checked + .stylish_checkbox {
   cursor: pointer;
   font-size: 0.7rem;
   margin: 0 0.2rem;
+}
+
+@media screen and (min-width: 800px) {
+  .post_time {
+    font-size: 0.85rem;
+  }
 }

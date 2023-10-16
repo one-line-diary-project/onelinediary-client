@@ -1,10 +1,11 @@
 .datePicker_container {
   display: flex;
-  width: 50vh;
+  width: 90vw;
   margin: 0 auto;
   margin-top: 2rem;
-  justify-content: space-between;
   align-items: center;
+  max-width: 55rem;
+  justify-content: space-evenly;
 }
 
 .datePicker_wrapper {
@@ -12,11 +13,12 @@
   border-radius: 10rem;
   border: 1px solid transparent;
   padding: 0.3rem 1rem 0.3rem 1rem;
-  width: 38vh;
+  width: 70vw;
   justify-content: space-evenly;
   align-items: center;
   background-color: var(--clr-diary-bcg);
   box-shadow: 0 5px 15px var(--clr-diary-border);
+  max-width: 40rem;
 }
 
 .dateCustomInput {
@@ -51,14 +53,16 @@
   color: var(--clr-text-font);
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 992px) {
   .datePicker_container {
-    width: 60vh;
+    width: 95vw;
     margin-top: 3rem;
+    max-width: 55rem;
   }
   .datePicker_wrapper {
-    width: 45vh;
+    /* width: 75vw;
     height: 5vh;
+    margin: 0 auto; */
   }
   .dateCustomInput {
     font-size: 1.25rem;

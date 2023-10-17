@@ -29,7 +29,7 @@ export const fetchCheckLogin = () => {
 export const fetchLogout = () => {
   return async (dispatch) => {
     const logout = async () => {
-      const response = await fetch(`http://localhost:3001/logout`, {
+      const response = await fetch(`${process.env.REACT_APP_LOGOUT_URL}`, {
         method: "POST",
         credentials: "include",
       });

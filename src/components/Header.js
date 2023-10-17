@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import classes from "./Header.module.css";
-import logo from "../assets/logo.png";
 import { ReactComponent as Logo } from "../assets/logo.svg";
 import { ReactComponent as Menu } from "../assets/menu.svg";
 import lightTheme from "../assets/lightTheme.svg";
@@ -11,7 +10,6 @@ import darkTheme from "../assets/darkTheme.svg";
 import { links } from "../data/links";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCheckLogin, fetchLogout } from "../store/user-action";
-import { uiActions } from "../store/ui-slice";
 
 const getStorageTheme = () => {
   let theme = "light-theme";
@@ -22,7 +20,6 @@ const getStorageTheme = () => {
 };
 
 const Header = () => {
-  const navigator = useNavigate();
   const dispatch = useDispatch();
 
   const [showLinks, setShowLinks] = useState(false);
@@ -46,6 +43,7 @@ const Header = () => {
       dispatch(fetchLogout());
       //navigator("/");
     }
+    toggleShowLinks();
   };
 
   useEffect(() => {
@@ -63,8 +61,7 @@ const Header = () => {
         <div className={classes.nav_center}>
           <div className={classes.nav_header}>
             <Link to="/">
-              <Logo className={classes.logo} />
-              {/* <img src={logo} className={classes.logo} alt="로고" /> */}
+              <Logo className={classes.logo} alt="한 줄 일기 사이트 로고" />
             </Link>
             <div className={classes.button_container}>
               <button
@@ -74,8 +71,14 @@ const Header = () => {
               >
                 <div className={classes.theme_toggle_main_img}>
                   <img
+                    width="22"
+                    height="22"
                     src={theme === "light-theme" ? lightTheme : darkTheme}
-                    alt="화면 색상 모드"
+                    alt={
+                      theme === "light-theme"
+                        ? "라이트 화면 모드"
+                        : "다크 화면 모드"
+                    }
                   />
                 </div>
               </button>
@@ -84,21 +87,25 @@ const Header = () => {
                 data-testid="toggleShowLinks"
                 onClick={toggleShowLinks}
               >
-                {/* <img src={menu} className="menu" alt="메뉴" /> */}
-                <Menu className={classes.nav_toggle_menu} alt="nav menu" />
+                <Menu className={classes.nav_toggle_menu} alt="메뉴" />
               </button>
             </div>
           </div>
           <div className={classes.menu_center}>
             <button
               className={classes.theme_toggle_sub}
+              arai-label="모바일 메뉴"
               onClick={toggleChangeTheme}
             >
               <div className={classes.theme_toggle_sub_img}>
                 <img
                   src={theme === "light-theme" ? lightTheme : darkTheme}
                   className="menu"
-                  alt={theme}
+                  alt={
+                    theme === "light-theme"
+                      ? "라이트 화면 모드"
+                      : "다크 화면 모드"
+                  }
                 />
               </div>
             </button>
@@ -137,4 +144,4 @@ const Header = () => {
   );
 };
 
-export default React.memo(Header);
+export default Header;

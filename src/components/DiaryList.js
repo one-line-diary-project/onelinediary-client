@@ -1,4 +1,4 @@
-import React, { Fragment, useCallback, useState } from "react";
+import { Fragment } from "react";
 
 import DeleteButton from "./DeleteButton";
 import DiaryItem from "./DiaryItem";
@@ -8,7 +8,6 @@ import { useSelector } from "react-redux";
 const DiaryList = ({ contents }) => {
   const showChck = useSelector((state) => state.ui.deleteButtonClicked);
   const isWritable = useSelector((state) => state.ui.isWritableMenu);
-
   return (
     <div className={classes.diary_container}>
       {contents.length > 0 && (

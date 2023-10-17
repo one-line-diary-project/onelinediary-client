@@ -9,11 +9,12 @@
   background: var(--clr-bcg);
   border-color: transparent;
   font-size: 1rem;
-  flex: 1 0 auto;
+  flex: 1 1 auto;
   height: 3rem;
   color: var(--clr-text-font);
   resize: none;
   font-family: "Noto Sans KR", sans-serif;
+  min-width: 2rem;
 }
 .diary::placeholder {
   font-family: "Noto Sans KR", sans-serif;
@@ -22,7 +23,7 @@
 .submit_btn {
   background: var(--clr-submit-btn);
   border-color: transparent;
-  flex: 0 0 5rem;
+  flex: 0 1 5rem;
   display: grid;
   align-items: center;
   padding: 0.25rem;

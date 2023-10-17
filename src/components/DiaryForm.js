@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import classes from "./DiaryForm.module.css";
 import { diaryActions } from "../store/diary-slice";
-import { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 
 import { getStringTime } from "../utils/time";
 import { uiActions } from "../store/ui-slice";
@@ -23,8 +23,9 @@ const DiaryForm = (props) => {
 
     if (!isLogined) {
       alert("로그인 후 이용해주세요.");
+      dispatch(diaryActions.setContent({ text: "" }));
       navigator("/login");
-      //return;
+      return;
     }
     if (content.length < 1) {
       contentRef.current.focus();
@@ -69,4 +70,4 @@ const DiaryForm = (props) => {
   );
 };
 
-export default DiaryForm;
+export default React.memo(DiaryForm);

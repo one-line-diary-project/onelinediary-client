@@ -2,12 +2,12 @@ import React, { Fragment, forwardRef, useEffect, useState } from "react";
 import Datepicker from "react-datepicker";
 import { getStringDate } from "../utils/date";
 
-import "react-datepicker/dist/react-datepicker.css";
 import classes from "./DateSelector.module.css";
 import { fetchDiaryDataList } from "../store/diary-action";
 import { useDispatch } from "react-redux";
 import { diaryActions } from "../store/diary-slice";
-import { uiActions } from "../store/ui-slice";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 const DateSelector = () => {
   const dispatch = useDispatch();

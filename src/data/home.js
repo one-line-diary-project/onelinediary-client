@@ -22,5 +22,5 @@ export const mainDiary = {
       _id: "TEST77457",
     },
   ],
-  createdAt: "2023-01-01",
+  createdAt: "2023-10-01",
 };

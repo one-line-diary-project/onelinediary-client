@@ -59,11 +59,11 @@
     margin-top: 3rem;
     max-width: 55rem;
   }
-  .datePicker_wrapper {
-    /* width: 75vw;
+  /* .datePicker_wrapper {
+     width: 75vw;
     height: 5vh;
-    margin: 0 auto; */
-  }
+    margin: 0 auto; 
+  } */
   .dateCustomInput {
     font-size: 1.25rem;
   }

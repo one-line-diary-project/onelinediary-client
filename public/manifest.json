@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "한 줄 일기",
+  "name": "한 줄씩, 한 줄 일기",
   "icons": [
     {
       "src": "favicon.ico",

@@ -6,6 +6,7 @@ import cancelDeleteButton from "../assets/cancelDeleteButton.svg";
 import { uiActions } from "../store/ui-slice";
 import { useDispatch, useSelector } from "react-redux";
 import { diaryActions } from "../store/diary-slice";
+import React from "react";
 
 const DeleteButton = () => {
   const dispatch = useDispatch();

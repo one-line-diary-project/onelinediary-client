@@ -24,6 +24,7 @@ const Diary = () => {
     dispatch(fetchScrollDiaryData());
   });
 
+  const styles = { textAlign: "center" };
   return (
     <Fragment>
       <DateSelector />
@@ -32,7 +33,11 @@ const Diary = () => {
       ) : (
         <NoneDiary />
       )}
-      {isLoaded && <p ref={ref}>loding..</p>}
+      {isLoaded && (
+        <p style={styles} ref={ref}>
+          Loding . . .
+        </p>
+      )}
     </Fragment>
   );
 };

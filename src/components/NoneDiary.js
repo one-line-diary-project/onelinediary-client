@@ -1,4 +1,3 @@
-import React from "react";
 import classes from "./NoneDiary.module.css";
 
 const NoneDiary = () => {
@@ -9,4 +8,4 @@ const NoneDiary = () => {
   );
 };
 
-export default React.memo(NoneDiary);
+export default NoneDiary;

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import classes from "./DiaryForm.module.css";
 import { diaryActions } from "../store/diary-slice";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 
 import { getStringTime } from "../utils/time";
 import { uiActions } from "../store/ui-slice";

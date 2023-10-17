@@ -4,7 +4,7 @@
 
 import { diaryActions } from "../store/diary-slice";
 import store from ".";
-import { act } from "react-dom/test-utils";
+import { act } from "../test/utils/testUtil";
 // let store;
 
 const mockData = {

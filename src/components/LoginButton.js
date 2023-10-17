@@ -1,7 +1,6 @@
 import React from "react";
 import classes from "./LoginButton.module.css";
 import loginButton from "../assets/loginButton.png";
-import { useDispatch } from "react-redux";
 import getGoogleUrl from "../utils/googleUrl";
 
 const LoginButton = () => {
@@ -27,4 +26,4 @@ const LoginButton = () => {
   );
 };
 
-export default React.memo(LoginButton);
+export default LoginButton;

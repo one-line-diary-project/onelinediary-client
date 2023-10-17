@@ -71,6 +71,8 @@ const Header = () => {
               >
                 <div className={classes.theme_toggle_main_img}>
                   <img
+                    width="22"
+                    height="22"
                     src={theme === "light-theme" ? lightTheme : darkTheme}
                     alt="화면 색상 모드"
                   />
@@ -81,7 +83,6 @@ const Header = () => {
                 data-testid="toggleShowLinks"
                 onClick={toggleShowLinks}
               >
-                {/* <img src={menu} className="menu" alt="메뉴" /> */}
                 <Menu className={classes.nav_toggle_menu} alt="nav menu" />
               </button>
             </div>

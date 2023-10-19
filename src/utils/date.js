@@ -1,16 +1,23 @@
-export const getStringDate = (date, isSearch) => {
-  let formattedDate;
-  const currentDate = date ? new Date(date) : new Date();
+import moment from "moment-timezone";
 
-  const year = currentDate.getFullYear();
-  const month = String(currentDate.getMonth() + 1).padStart(2, "0"); // 월 (0부터 시작하므로 +1 필요)
-  const day = String(currentDate.getDate()).padStart(2, "0");
-
-  if (isSearch) {
-    formattedDate = `${year}-${month}-${day}`;
+export const getStringDate = (date, isEndDate) => {
+  let currentDate;
+  if (isEndDate) {
+    currentDate = date ? new Date(date) : new Date();
+    currentDate.setDate(currentDate.getDate() + 1);
   } else {
-    formattedDate = `${year}.${month}.${day}`;
+    currentDate = date ? new Date(date) : new Date();
   }
 
-  return formattedDate;
+  return moment(currentDate).format("YYYY.MM.DD");
+};
+
+export const getSearchDate = (date, isEndDate) => {
+  const localDate = date
+    ? new Date(getStringDate(date, isEndDate))
+    : new Date(getStringDate("", isEndDate));
+
+  const utcTime = moment.utc(localDate).format();
+  console.log(utcTime);
+  return utcTime;
 };

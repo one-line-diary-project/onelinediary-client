@@ -1,6 +1,6 @@
 import React, { Fragment, forwardRef, useEffect, useState } from "react";
 import Datepicker from "react-datepicker";
-import { getStringDate } from "../utils/date";
+import { getStringDate, getSearchDate } from "../utils/date";
 
 import classes from "./DateSelector.module.css";
 import { fetchDiaryDataList } from "../store/diary-action";
@@ -23,8 +23,8 @@ const DateSelector = () => {
   const handleSearchClick = () => {
     dispatch(
       diaryActions.setSearhDate({
-        startDate: getStringDate(startDate, true),
-        endDate: getStringDate(endDate, true),
+        startDate: getSearchDate(startDate),
+        endDate: getSearchDate(endDate, true),
       })
     );
     dispatch(fetchDiaryDataList({}));

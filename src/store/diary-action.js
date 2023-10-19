@@ -1,11 +1,16 @@
-import { getStringDate } from "../utils/date";
+import { getSearchDate } from "../utils/date";
 import { diaryActions } from "./diary-slice";
 import { uiActions } from "./ui-slice";
 
 export const fetchDiaryData = () => {
   return async (dispatch) => {
     const fetchData = async () => {
-      const fullUrl = `${process.env.REACT_APP_DIARY_URL}?`;
+      const queryParam = new URLSearchParams({
+        startDate: getSearchDate(),
+        endDate: getSearchDate("", true),
+      });
+
+      const fullUrl = `${process.env.REACT_APP_DIARY_URL}?${queryParam}`;
       const response = await fetch(fullUrl, {
         credentials: "include",
       });
@@ -37,7 +42,7 @@ export const fetchDiaryDataList = () => {
         perPage: getState().diary.perPage,
       });
 
-      const fullUrl = `${process.env.REACT_APP_DIARY_URL}?${queryParam}`;
+      const fullUrl = `${process.env.REACT_APP_DIARYLIST_URL}?${queryParam}`;
       const response = await fetch(fullUrl, {
         credentials: "include",
       });
@@ -79,7 +84,7 @@ export const fetchScrollDiaryData = () => {
         perPage: getState().diary.perPage,
       });
 
-      const fullUrl = `${process.env.REACT_APP_DIARY_URL}?${queryParam}`;
+      const fullUrl = `${process.env.REACT_APP_DIARYLIST_URL}?${queryParam}`;
       const response = await fetch(fullUrl, {
         credentials: "include",
       });

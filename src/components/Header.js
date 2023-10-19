@@ -37,13 +37,15 @@ const Header = () => {
     }
   };
 
-  const handleLogout = (e) => {
+  const handleMenuClickEvent = (e) => {
     if (e.target.href.indexOf("logout") !== -1 && isLogined) {
       e.preventDefault();
       dispatch(fetchLogout());
       //navigator("/");
     }
-    toggleShowLinks();
+    if (showLinks) {
+      toggleShowLinks();
+    }
   };
 
   useEffect(() => {
@@ -124,7 +126,7 @@ const Header = () => {
                         url === "/login" ? (isLogined ? "/logout" : url) : url
                       }
                       className={url === "/login" ? classes.login_btn : ""}
-                      onClick={handleLogout}
+                      onClick={handleMenuClickEvent}
                       data-testid={isLogined ? "toggleLogout" : ""}
                     >
                       {url === "/login"

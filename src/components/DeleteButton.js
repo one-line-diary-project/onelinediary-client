@@ -16,10 +16,6 @@ const DeleteButton = () => {
     dispatch(uiActions.toggleCheckbox());
   };
 
-  const handleCancelDeleteClick = () => {
-    dispatch(uiActions.toggleCheckbox());
-  };
-
   const handleConfirmDeleteClick = () => {
     const checkedIds = Array.from(
       document.querySelectorAll('input[type="checkbox"]:checked')
@@ -34,7 +30,7 @@ const DeleteButton = () => {
     }
 
     dispatch(diaryActions.removeContentFromDiary({ _id: checkedIds }));
-    handleCancelDeleteClick();
+    handleDeleteClick();
   };
 
   return (
@@ -52,7 +48,7 @@ const DeleteButton = () => {
         <div className={classes.delete_action_container}>
           <button
             className={classes.cancel_delete_btn}
-            onClick={handleCancelDeleteClick}
+            onClick={handleDeleteClick}
             data-testid="cancelButton"
           >
             <img src={cancelDeleteButton} alt="항목 삭제 취소" />

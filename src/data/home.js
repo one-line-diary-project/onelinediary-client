@@ -12,14 +12,9 @@ export const mainDiary = {
       _id: "TEST77455",
     },
     {
-      content: "오늘 하루,일상을",
+      content: "오늘 하루, 일상을 기록해 봅시다",
       postTime: "PM 09:03",
       _id: "TEST77456",
-    },
-    {
-      content: "기록해봅시다.",
-      postTime: "PM 09:04",
-      _id: "TEST77457",
     },
   ],
   createdAt: "2023-10-01",

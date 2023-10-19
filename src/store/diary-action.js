@@ -1,9 +1,14 @@
+import { getStringDate } from "../utils/date";
 import { diaryActions } from "./diary-slice";
 import { uiActions } from "./ui-slice";
+
 export const fetchDiaryData = () => {
   return async (dispatch) => {
     const fetchData = async () => {
-      const fullUrl = `${process.env.REACT_APP_DIARY_URL}`;
+      const queryParam = new URLSearchParams({
+        startDate: getStringDate("", true),
+      });
+      const fullUrl = `${process.env.REACT_APP_DIARY_URL}?${queryParam}`;
       const response = await fetch(fullUrl, {
         credentials: "include",
       });
@@ -120,6 +125,7 @@ export const sendDiaryData = (diary) => {
         body: JSON.stringify({
           _id: diary._id,
           contents: diary.contents,
+          creatAt: new Date(),
         }),
         credentials: "include",
       });

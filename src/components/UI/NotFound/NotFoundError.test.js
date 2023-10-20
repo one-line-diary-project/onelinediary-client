@@ -1,4 +1,4 @@
-import { render } from "../test/utils/testUtil";
+import { render } from "../../../test/utils/testUtil";
 import NotFoundError from "./NotFoundError";
 
 describe("NotFoundError components", () => {

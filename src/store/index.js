@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import uiSlice from "./ui-slice";
-import diarySlice from "./diary-slice";
+import uiSlice from "./UI/ui-slice";
+import diarySlice from "./Diary/diary-slice";
 
 const store = configureStore({
   reducer: {

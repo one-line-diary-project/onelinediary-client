@@ -1,6 +1,6 @@
 import { uiActions } from "../store/ui-slice";
 
-import store from ".";
+import store from "..";
 
 describe("ui-slice", () => {
   it("Update writableMenu status ", () => {

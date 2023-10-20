@@ -1,4 +1,4 @@
-import { render } from "../test/utils/testUtil";
+import { render } from "../../test/utils/testUtil";
 import NoneDiary from "./NoneDiary";
 
 describe("NoneDiary components", () => {

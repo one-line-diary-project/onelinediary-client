@@ -1,5 +1,5 @@
 import classes from "./Footer.module.css";
-import { ReactComponent as Logo } from "../assets/githubMark.svg";
+import { ReactComponent as Logo } from "../../../assets/githubMark.svg";
 import React from "react";
 
 const Footer = () => {

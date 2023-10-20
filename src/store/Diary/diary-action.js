@@ -1,6 +1,6 @@
-import { getSearchDate } from "../utils/date";
+import { getSearchDate } from "../../utils/date";
 import { diaryActions } from "./diary-slice";
-import { uiActions } from "./ui-slice";
+import { uiActions } from "../UI/ui-slice";
 
 export const fetchDiaryData = () => {
   return async (dispatch) => {

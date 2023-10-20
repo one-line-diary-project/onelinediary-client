@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import LoginButton from "../components/LoginButton";
+import LoginButton from "../components/UI/Button/LoginButton";
 import { Fragment } from "react";
 
 const Login = () => {

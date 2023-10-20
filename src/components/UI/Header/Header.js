@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import classes from "./Header.module.css";
-import { ReactComponent as Logo } from "../assets/logo.svg";
-import { ReactComponent as Menu } from "../assets/menu.svg";
-import lightTheme from "../assets/lightTheme.svg";
-import darkTheme from "../assets/darkTheme.svg";
+import { ReactComponent as Logo } from "../../../assets/logo.svg";
+import { ReactComponent as Menu } from "../../../assets/menu.svg";
+import lightTheme from "../../../assets/lightTheme.svg";
+import darkTheme from "../../../assets/darkTheme.svg";
 
-import { links } from "../data/links";
+import { links } from "../../../data/links";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCheckLogin, fetchLogout } from "../store/user-action";
+import { fetchCheckLogin, fetchLogout } from "../../../store/User/user-action";
 
 const getStorageTheme = () => {
   let theme = "light-theme";

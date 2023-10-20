@@ -1,11 +1,11 @@
 import classes from "./DeleteButton.module.css";
 
-import deleteButton from "../assets/deleteButton.svg";
-import confirmDeleteButton from "../assets/confirmDeleteButton.svg";
-import cancelDeleteButton from "../assets/cancelDeleteButton.svg";
-import { uiActions } from "../store/ui-slice";
+import deleteButton from "../../../assets/deleteButton.svg";
+import confirmDeleteButton from "../../../assets/confirmDeleteButton.svg";
+import cancelDeleteButton from "../../../assets/cancelDeleteButton.svg";
+import { uiActions } from "../../../store/UI/ui-slice";
 import { useDispatch, useSelector } from "react-redux";
-import { diaryActions } from "../store/diary-slice";
+import { diaryActions } from "../../../store/Diary/diary-slice";
 import React from "react";
 
 const DeleteButton = () => {

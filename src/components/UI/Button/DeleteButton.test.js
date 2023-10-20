@@ -1,11 +1,11 @@
 import userEvent from "@testing-library/user-event";
-import { screen, act } from "../test/utils/testUtil";
+import { screen, act } from "../../../test/utils/testUtil";
 import DeleteButton from "./DeleteButton";
 import { Provider } from "react-redux";
-import store from "../store";
+import store from "../../../store";
 import { render } from "@testing-library/react";
-import { uiActions } from "../store/ui-slice";
-import DiaryItem from "./DiaryItem";
+import { uiActions } from "../../../store/UI/ui-slice";
+import DiaryItem from "../../Diary/DiaryItem";
 
 const mockdata = {
   _id: "b1234",

@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./LoginButton.module.css";
-import loginButton from "../assets/loginButton.png";
-import getGoogleUrl from "../utils/googleUrl";
+import loginButton from "../../../assets/loginButton.png";
+import getGoogleUrl from "../../../utils/googleUrl";
 
 const LoginButton = () => {
   const handleLoginClick = () => {

@@ -63,7 +63,7 @@ const Header = () => {
         <div className={classes.nav_center}>
           <div className={classes.nav_header}>
             <Link to="/">
-              <Logo className={classes.logo} />
+              <Logo className={classes.logo} alt="한 줄 일기 사이트 로고" />
             </Link>
             <div className={classes.button_container}>
               <button
@@ -76,7 +76,11 @@ const Header = () => {
                     width="22"
                     height="22"
                     src={theme === "light-theme" ? lightTheme : darkTheme}
-                    alt="화면 색상 모드"
+                    alt={
+                      theme === "light-theme"
+                        ? "라이트 화면 모드"
+                        : "다크 화면 모드"
+                    }
                   />
                 </div>
               </button>
@@ -85,20 +89,25 @@ const Header = () => {
                 data-testid="toggleShowLinks"
                 onClick={toggleShowLinks}
               >
-                <Menu className={classes.nav_toggle_menu} alt="nav menu" />
+                <Menu className={classes.nav_toggle_menu} alt="메뉴" />
               </button>
             </div>
           </div>
           <div className={classes.menu_center}>
             <button
               className={classes.theme_toggle_sub}
+              arai-label="모바일 메뉴"
               onClick={toggleChangeTheme}
             >
               <div className={classes.theme_toggle_sub_img}>
                 <img
                   src={theme === "light-theme" ? lightTheme : darkTheme}
                   className="menu"
-                  alt={theme}
+                  alt={
+                    theme === "light-theme"
+                      ? "라이트 화면 모드"
+                      : "다크 화면 모드"
+                  }
                 />
               </div>
             </button>

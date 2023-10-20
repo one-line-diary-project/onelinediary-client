@@ -1,9 +1,9 @@
 import { Fragment, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { uiActions } from "../store/ui-slice";
-import DiaryMaker from "../components/DiaryMaker";
-import { fetchDiaryData, sendDiaryData } from "../store/diary-action";
+import { uiActions } from "../store/UI/ui-slice";
+import DiaryMaker from "../components/Diary/DiaryMaker";
+import { fetchDiaryData, sendDiaryData } from "../store/Diary/diary-action";
 
 let isInitial = true;
 

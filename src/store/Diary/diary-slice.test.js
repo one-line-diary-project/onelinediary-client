@@ -3,8 +3,8 @@
 // import uiSlice from "./ui-slice";
 
 import { diaryActions } from "../store/diary-slice";
-import store from ".";
-import { act } from "../test/utils/testUtil";
+import store from "..";
+import { act } from "../../test/utils/testUtil";
 // let store;
 
 const mockData = {

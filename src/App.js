@@ -3,8 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import BeatLoader from "react-spinners/BeatLoader";
 
 import "./App.css";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Header from "./components/UI/Header/Header";
+import Footer from "./components/UI/Footer/Footer";
 
 const Home = lazy(() => import("./pages/Home"));
 const New = lazy(() => import("./pages/New"));

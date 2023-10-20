@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
-import React, { useEffect } from "react";
+import React from "react";
 
 import classes from "./DiaryMaker.module.css";
 import DiaryForm from "./DiaryForm";
 import DiaryList from "./DiaryList";
-import { getStringDate } from "../utils/date";
+import { getStringDate } from "../../utils/date";
 
 const DiaryMaker = ({ _id, createdAt, contents }) => {
   const isWritable = useSelector((state) => state.ui.isWritableMenu);

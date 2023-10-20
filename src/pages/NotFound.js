@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import NotFoundError from "../components/NotFoundError";
+import NotFoundError from "../components/UI/NotFound/NotFoundError";
 
 const NotFound = () => {
   return (

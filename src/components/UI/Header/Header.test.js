@@ -1,5 +1,5 @@
 import userEvent from "@testing-library/user-event";
-import { act, render, screen } from "../test/utils/testUtil";
+import { act, render, screen } from "../../../test/utils/testUtil";
 import Header from "./Header";
 
 afterEach(() => {

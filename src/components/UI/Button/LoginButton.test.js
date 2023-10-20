@@ -1,5 +1,5 @@
 import userEvent from "@testing-library/user-event";
-import { render, screen } from "../test/utils/testUtil";
+import { render, screen } from "../../../test/utils/testUtil";
 import LoginButton from "./LoginButton";
 
 const { location } = window;

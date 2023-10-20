@@ -1,4 +1,4 @@
-import { render, screen } from "../test/utils/testUtil";
+import { render, screen } from "../../test/utils/testUtil";
 import DiaryList from "./DiaryList";
 
 const mockdata = [

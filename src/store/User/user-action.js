@@ -1,5 +1,5 @@
-import { diaryActions } from "./diary-slice";
-import { uiActions } from "./ui-slice";
+import { diaryActions } from "../Diary/diary-slice";
+import { uiActions } from "../UI/ui-slice";
 
 export const fetchCheckLogin = () => {
   return async (dispatch) => {

@@ -1,5 +1,5 @@
-import { render } from "../test/utils/testUtil";
-import Header from "./Header";
+import { render } from "../../../test/utils/testUtil";
+import Header from "../Header/Header";
 
 describe("Header components", () => {
   let tree;

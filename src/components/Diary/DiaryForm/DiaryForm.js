@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import classes from "./DiaryForm.module.css";
-import { diaryActions } from "../../store/Diary/diary-slice";
+import { diaryActions } from "../../../store/Diary/diary-slice";
 import React, { useRef } from "react";
 
-import { getStringTime } from "../../utils/time";
-import { uiActions } from "../../store/UI/ui-slice";
+import { getStringTime } from "../../../utils/time";
+import { uiActions } from "../../../store/UI/ui-slice";
 import { useNavigate } from "react-router-dom";
 
 const DiaryForm = (props) => {

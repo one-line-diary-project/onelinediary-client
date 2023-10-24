@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import store from "../../../store";
 import { render } from "@testing-library/react";
 import { uiActions } from "../../../store/UI/ui-slice";
-import DiaryItem from "../../Diary/DiaryItem";
+import DiaryItem from "../../Diary/DiaryItem/DiaryItem";
 
 const mockdata = {
   _id: "b1234",

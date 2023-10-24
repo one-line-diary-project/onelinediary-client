@@ -1,10 +1,10 @@
 import userEvent from "@testing-library/user-event";
-import { screen, act } from "../../test/utils/testUtil";
+import { screen, act } from "../../../test/utils/testUtil";
 import DiaryForm from "./DiaryForm";
 import { Provider } from "react-redux";
-import store from "../../store";
+import store from "../../../store";
 import { render } from "@testing-library/react";
-import { uiActions } from "../../store/UI/ui-slice";
+import { uiActions } from "../../../store/UI/ui-slice";
 
 describe("DiaryForm components", () => {
   let tree;

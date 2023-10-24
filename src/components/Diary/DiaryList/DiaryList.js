@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 
-import DeleteButton from "../UI/Button/DeleteButton";
-import DiaryItem from "./DiaryItem";
+import DeleteButton from "../../UI/Button/DeleteButton";
+import DiaryItem from "../DiaryItem/DiaryItem";
 import classes from "./DiaryList.module.css";
 import { useSelector } from "react-redux";
 

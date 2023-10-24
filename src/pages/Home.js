@@ -1,6 +1,6 @@
 import { Fragment, useEffect } from "react";
 import { mainDiary } from "../data/home";
-import DiaryMaker from "../components/Diary/DiaryMaker";
+import DiaryMaker from "../components/Diary/DiaryMaker/DiaryMaker";
 import { useDispatch } from "react-redux";
 import { uiActions } from "../store/UI/ui-slice";
 

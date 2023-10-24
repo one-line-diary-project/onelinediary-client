@@ -1,9 +1,9 @@
 import { Fragment, useEffect } from "react";
-import DiaryMaker from "../components/Diary/DiaryMaker";
+import DiaryMaker from "../components/Diary/DiaryMaker/DiaryMaker";
 import { uiActions } from "../store/UI/ui-slice";
 import { useDispatch, useSelector } from "react-redux";
 import DateSelector from "../components/UI/DatePIcker/DateSelector";
-import NoneDiary from "../components/Diary/NoneDiary";
+import NoneDiary from "../components/Diary/NoneDiary/NoneDiary";
 import { fetchScrollDiaryData } from "../store/Diary/diary-action";
 import useIntersection from "../hooks/useIntersection.js";
 

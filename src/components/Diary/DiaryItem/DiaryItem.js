@@ -1,9 +1,9 @@
 import classes from "./DiaryItem.module.css";
-import editButton from "../../assets/editButton.svg";
-import { uiActions } from "../../store/UI/ui-slice";
+import editButton from "../../../assets/editButton.svg";
+import { uiActions } from "../../../store/UI/ui-slice";
 import { useDispatch, useSelector } from "react-redux";
 import React from "react";
-import { diaryActions } from "../../store/Diary/diary-slice";
+import { diaryActions } from "../../../store/Diary/diary-slice";
 
 const DiaryItem = ({ _id, content, postTime, showChck }) => {
   const isWritable = useSelector((state) => state.ui.isWritableMenu);

@@ -1,10 +1,10 @@
 import { render } from "../../../test/utils/testUtil";
-import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
-describe("Header components", () => {
+describe("Footer components", () => {
   let tree;
   beforeEach(() => {
-    tree = render(<Header />);
+    tree = render(<Footer />);
   });
   it("renders without crashing", () => {
     expect(tree).toBeDefined();

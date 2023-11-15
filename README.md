@@ -178,7 +178,7 @@ function App() {
 export default App;
 ```
 
-개선을 위해 사용자가 필요하지 않은 코드를 불러오지 않게 하며, 앱의 초기화 로딩에 필요한 비용을 줄여주는 코드 번들을 도입하기로 하였고, 공식 문서가 제시하는 Route-based code splitting이라는 방법을 진행하여 번들 크기를 줄였습니다. 그 결과 아래와 같이 개선되었습니다.  
+개선을 위해 사용자가 필요하지 않은 코드를 불러오지 않게 하며, 앱의 초기화 로딩에 필요한 비용을 줄여주는 코드 분할을 도입하기로 하였고, 공식 문서가 제시하는 Route-based code splitting이라는 방법을 진행하여 번들 크기를 줄였습니다. 그 결과 아래와 같이 개선되었습니다.  
 ![mobile_main_after](https://github.com/one-line-diary-project/onelinediary-client/assets/139197409/82b76b76-d86f-4690-87ad-3ebdee6946de)
 ![after_codesplit](https://github.com/one-line-diary-project/onelinediary-client/assets/139197409/e5c7b0bf-8f63-49c3-aa98-4d044c5453ad)
 
